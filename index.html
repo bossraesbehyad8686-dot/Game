@@ -84,6 +84,7 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 0 20px rgba(255, 50, 0, 0.6);
     transition: all 0.2s ease; backdrop-filter: blur(6px);
+    position: relative;
   }
   .icon-btn:hover { transform: scale(1.1); }
   .icon-btn:active { transform: scale(0.9); }
@@ -96,6 +97,25 @@
     border-color: #666; color: #888;
     background: rgba(20, 20, 20, 0.9);
     box-shadow: 0 0 15px rgba(100, 100, 100, 0.4);
+  }
+  .streak-badge {
+    position: absolute;
+    top: -5px; right: -5px;
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    padding: 2px 7px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 50, 0, 0.8);
+    display: none;
+  }
+  .streak-badge.show { display: block; animation: pulse 1.5s infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
   }
   .container {
     position: relative; z-index: 2; text-align: center;
@@ -235,7 +255,7 @@
   .main-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
     margin: 40px auto 20px;
     position: relative;
@@ -244,17 +264,18 @@
     padding: 0 20px;
   }
   .main-btn {
-    padding: 15px 28px;
+    padding: 15px 26px;
     border: 3px solid;
     border-radius: 50px;
     font-family: 'Arial Black', Tahoma, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 900;
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    position: relative;
   }
   .shop-open-btn {
     background: linear-gradient(135deg, #ffd700, #ff8c00, #ff5500);
@@ -290,6 +311,37 @@
     box-shadow: 0 0 25px rgba(255, 87, 34, 0.6), 0 8px 20px rgba(0,0,0,0.5);
   }
   .challenge-open-btn:hover { transform: translateY(-3px) scale(1.05); }
+  .streak-open-btn {
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    color: #fff;
+    border-color: #ff6a6a;
+    box-shadow: 0 0 25px rgba(255, 50, 0, 0.6), 0 8px 20px rgba(0,0,0,0.5);
+  }
+  .streak-open-btn:hover { transform: translateY(-3px) scale(1.05); }
+  .achievement-open-btn {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #1a0a00;
+    border-color: #ffeb3b;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 8px 20px rgba(0,0,0,0.5);
+  }
+  .achievement-open-btn:hover { transform: translateY(-3px) scale(1.05); }
+
+  /* نشان دستاورد روی دکمه */
+  .achievement-badge {
+    position: absolute;
+    top: -8px; right: -8px;
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 12px rgba(255, 50, 0, 0.9);
+    display: none;
+    font-family: Tahoma, sans-serif;
+  }
+  .achievement-badge.show { display: block; animation: pulse 1.5s infinite; }
 
   .shop-overlay {
     position: fixed; inset: 0;
@@ -657,6 +709,200 @@
     box-shadow: 0 5px 20px rgba(0, 200, 80, 0.5);
   }
 
+  /* ===== Streak ===== */
+  .streak-modal {
+    background: linear-gradient(160deg, #3a0000 0%, #1a0000 100%);
+    border: 3px solid #ff3300;
+    border-radius: 25px;
+    padding: 30px 25px;
+    max-width: 480px; width: 100%;
+    box-shadow: 0 0 60px rgba(255, 50, 0, 0.6);
+    font-family: Tahoma, sans-serif;
+    animation: popIn 0.35s ease;
+    position: relative;
+    text-align: center;
+  }
+  .streak-modal h2 {
+    color: #ff6a6a; font-size: 24px;
+    margin-bottom: 8px; text-shadow: 0 0 15px rgba(255, 50, 0, 0.8);
+  }
+  .streak-subtitle {
+    color: #ffaaaa; font-size: 13px; margin-bottom: 20px; line-height: 1.8;
+  }
+  .streak-days {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .streak-day {
+    background: rgba(255, 50, 0, 0.1);
+    border: 2px solid rgba(255, 50, 0, 0.3);
+    border-radius: 14px;
+    padding: 12px 6px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .streak-day.claimed {
+    background: linear-gradient(135deg, #00c853, #009624);
+    border-color: #00e676;
+    box-shadow: 0 0 15px rgba(0, 200, 80, 0.6);
+  }
+  .streak-day.current {
+    background: linear-gradient(135deg, #ff8c00, #ff3300);
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+    animation: pulse 1.5s infinite;
+  }
+  .streak-day-num {
+    font-size: 11px;
+    color: #ffaaaa;
+    margin-bottom: 4px;
+  }
+  .streak-day.claimed .streak-day-num { color: #b0ffd0; }
+  .streak-day.current .streak-day-num { color: #fff; }
+  .streak-day-emoji {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  .streak-day-reward {
+    font-size: 11px;
+    color: #ffd700;
+    font-weight: bold;
+    direction: ltr;
+  }
+  .streak-day.claimed .streak-day-reward { color: #fff; }
+  .streak-day.current .streak-day-reward { color: #fff; }
+  .streak-claim-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ff3300, #cc0000);
+    color: #fff; border: none;
+    border-radius: 14px;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px; font-weight: bold;
+    cursor: pointer; transition: all 0.2s ease;
+    box-shadow: 0 5px 20px rgba(255, 50, 0, 0.6);
+  }
+  .streak-claim-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255, 50, 0, 0.9);
+  }
+  .streak-claim-btn:disabled {
+    background: #444;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+  }
+  .streak-info {
+    margin-top: 15px;
+    background: rgba(255, 50, 0, 0.1);
+    border: 1px solid rgba(255, 50, 0, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+    color: #ffaaaa;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .streak-info b { color: #ffd700; }
+
+  /* ===== Achievements ===== */
+  .achievements-modal {
+    background: linear-gradient(160deg, #2a1a00 0%, #1a0f00 100%);
+    border: 3px solid #ffd700;
+    border-radius: 25px;
+    padding: 30px 25px;
+    max-width: 520px; width: 100%;
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+    font-family: Tahoma, sans-serif;
+    animation: popIn 0.35s ease;
+    position: relative;
+    text-align: right;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .achievements-modal h2 {
+    color: #ffd700; font-size: 24px;
+    margin-bottom: 8px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    text-align: center;
+  }
+  .achievements-subtitle {
+    color: #ffddaa; font-size: 13px; margin-bottom: 20px;
+    text-align: center; line-height: 1.8;
+  }
+  .achievements-progress {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .achievements-progress-text {
+    color: #ffd700; font-size: 14px; font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .achievements-progress-bar {
+    width: 100%; height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .achievements-progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #ffd700, #ff8c00);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  }
+  .achievement-item {
+    background: rgba(255, 215, 0, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  .achievement-item.unlocked {
+    background: linear-gradient(135deg, rgba(0, 200, 80, 0.15), rgba(0, 150, 60, 0.08));
+    border-color: #00c853;
+    box-shadow: 0 0 15px rgba(0, 200, 80, 0.3);
+  }
+  .achievement-icon {
+    font-size: 30px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+  .achievement-item.unlocked .achievement-icon {
+    filter: grayscale(0%);
+    opacity: 1;
+    animation: glow 2s infinite alternate;
+  }
+  .achievement-info { flex: 1; text-align: right; }
+  .achievement-title {
+    color: #ffd700; font-size: 14px; font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .achievement-item.unlocked .achievement-title { color: #00e676; }
+  .achievement-desc {
+    color: #bba080; font-size: 12px; line-height: 1.5;
+  }
+  .achievement-item.unlocked .achievement-desc { color: #b0ffd0; }
+  .achievement-reward {
+    color: #ffb300; font-size: 12px; margin-top: 4px; font-weight: bold;
+  }
+  .achievement-item.unlocked .achievement-reward { color: #00e676; }
+  .achievement-status {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
   .stats-box, .about-box, .links-box {
     position: relative; z-index: 2; max-width: 700px;
     margin: 40px auto; padding: 25px 20px;
@@ -804,15 +1050,24 @@
     .icon-btn { width: 42px; height: 42px; font-size: 18px; }
     .stat-value { font-size: 15px; }
     .about-box { font-size: 13px; padding: 20px 15px; }
-    .main-btn { font-size: 13px; padding: 12px 20px; }
-    .shop-modal, .code-modal, .wheel-modal, .challenge-modal { padding: 25px 18px; }
-    .shop-modal h2, .code-modal h2, .wheel-modal h2, .challenge-modal h2 { font-size: 20px; }
+    .main-btn { font-size: 12px; padding: 11px 18px; }
+    .shop-modal, .code-modal, .wheel-modal, .challenge-modal,
+    .streak-modal, .achievements-modal { padding: 25px 18px; }
+    .shop-modal h2, .code-modal h2, .wheel-modal h2, .challenge-modal h2,
+    .streak-modal h2, .achievements-modal h2 { font-size: 20px; }
     .package { padding: 14px; gap: 8px; }
     .pkg-emoji { font-size: 28px; }
     .pkg-coins { font-size: 15px; }
     .pkg-price { font-size: 11px; }
     .pkg-buy { font-size: 12px; padding: 8px 14px; }
     .wheel-container { width: 240px; height: 240px; }
+    .streak-days { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .streak-day { padding: 8px 4px; }
+    .streak-day-emoji { font-size: 18px; }
+    .streak-day-reward { font-size: 10px; }
+    .achievement-icon { font-size: 24px; }
+    .achievement-title { font-size: 13px; }
+    .achievement-desc { font-size: 11px; }
   }
 </style>
 </head>
@@ -830,6 +1085,7 @@
 
 <div class="top-buttons">
   <button class="icon-btn sound-btn" id="soundBtn">🔊</button>
+  <button class="icon-btn streak-btn" id="streakTopBtn" title="Streak روزانه">🔥<span class="streak-badge" id="streakBadge">!</span></button>
   <button class="icon-btn" id="resetBtn">🔄</button>
 </div>
 
@@ -872,6 +1128,8 @@
   <button class="main-btn code-open-btn" id="codeOpenBtn">🎁 کد سکه</button>
   <button class="main-btn wheel-open-btn" id="wheelOpenBtn">🎰 گردونه شانس</button>
   <button class="main-btn challenge-open-btn" id="challengeOpenBtn">📅 چالش روزانه</button>
+  <button class="main-btn streak-open-btn" id="streakOpenBtn">🔥 Streak روزانه</button>
+  <button class="main-btn achievement-open-btn" id="achievementOpenBtn">🏆 دستاوردها<span class="achievement-badge" id="achievementBadge">0</span></button>
 </div>
 
 <div class="stats-box">
@@ -897,6 +1155,16 @@
       <div class="stat-label">بالاترین سطح</div>
       <div class="stat-value" id="bestLevel">1</div>
     </div>
+    <div class="stat-item">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-label">Streak فعلی</div>
+      <div class="stat-value" id="currentStreak">0</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">🏅</div>
+      <div class="stat-label">دستاوردها</div>
+      <div class="stat-value" id="achievementCount">0</div>
+    </div>
   </div>
 </div>
 
@@ -916,8 +1184,10 @@
     <li>🖤 <b>ندرایت</b> — سطح ۸ (۷۰۰۰ سکه)</li>
     <li>🔥 <b>افسانه‌ای</b> — سطح ۹+ (هر ۱۰۰۰ سکه بالاتر)</li>
   </ul>
-  <h3>🎯 هدف بازی چیه؟</h3>
-  <p>هدف اینه که با ضربه زدن و بالا بردن لول، <span class="highlight">قدرت کلیکت رو زیاد کنی</span> و به لول‌های بالاتر (ندرایت و افسانه‌ای) برسی!</p>
+  <h3>🔥 Streak روزانه</h3>
+  <p>هر روز متوالی که بازی کنی، پاداش <span class="highlight">بیشتری</span> می‌گیری. از ۱۰۰ سکه روز اول تا ۵۰۰۰ سکه روز هفتم!</p>
+  <h3>🏆 دستاوردها</h3>
+  <p>با انجام کارهای خاص، دستاورد باز کن و <span class="highlight">پاداش سکه</span> بگیر. مثل «۱۰۰ کلیک بزن» یا «به لول ندرایت برس».</p>
 </div>
 
 <div class="links-box">
@@ -1038,6 +1308,42 @@
   </div>
 </div>
 
+<!-- ===== Streak روزانه ===== -->
+<div class="shop-overlay" id="streakOverlay">
+  <div class="streak-modal">
+    <button class="shop-modal-close" id="streakCloseBtn">✕</button>
+    <h2>🔥 Streak روزانه</h2>
+    <p class="streak-subtitle">هر روز متوالی که بیای، پاداش بیشتری می‌گیری! 🎁</p>
+
+    <div class="streak-days" id="streakDays"></div>
+
+    <button class="streak-claim-btn" id="streakClaimBtn">🎁 دریافت پاداش امروز</button>
+
+    <div class="streak-info" id="streakInfo">
+      🔥 Streak فعلی: <b>0 روز</b><br>
+      💡 اگه یه روز نیای، Streak صفر می‌شه!
+    </div>
+  </div>
+</div>
+
+<!-- ===== دستاوردها ===== -->
+<div class="shop-overlay" id="achievementsOverlay">
+  <div class="achievements-modal">
+    <button class="shop-modal-close" id="achievementsCloseBtn">✕</button>
+    <h2>🏆 دستاوردها</h2>
+    <p class="achievements-subtitle">با انجام کارها، نشان بگیر و پاداش سکه دریافت کن! 🎁</p>
+
+    <div class="achievements-progress">
+      <div class="achievements-progress-text" id="achievementsProgressText">0 از 0 دستاورد باز شده</div>
+      <div class="achievements-progress-bar">
+        <div class="achievements-progress-fill" id="achievementsProgressFill"></div>
+      </div>
+    </div>
+
+    <div id="achievementsList"></div>
+  </div>
+</div>
+
 <div class="buy-modal-overlay" id="buyOverlay">
   <div class="buy-modal">
     <div class="buy-modal-emoji">✅</div>
@@ -1129,6 +1435,7 @@
   function playSuccessSound() { [523, 659, 784, 1046, 1318].forEach((f, i) => playTone(f, 0.3, 'sine', 0.18, i * 0.09)); }
   function playErrorSound() { playTone(200, 0.15, 'square', 0.15); playTone(150, 0.3, 'square', 0.15, 0.15); }
   function playWinSound() { [784, 988, 1175, 1568].forEach((f, i) => playTone(f, 0.4, 'triangle', 0.2, i * 0.12)); }
+  function playAchievementSound() { [1046, 1318, 1568, 2093].forEach((f, i) => playTone(f, 0.35, 'sine', 0.2, i * 0.1)); }
 
   const soundBtn = document.getElementById('soundBtn');
   function updateSoundBtn() {
@@ -1162,6 +1469,8 @@
   const bestLevelEl = document.getElementById('bestLevel');
   const currentLevelIcon = document.getElementById('currentLevelIcon');
   const currentLevelName = document.getElementById('currentLevelName');
+  const currentStreakEl = document.getElementById('currentStreak');
+  const achievementCountEl = document.getElementById('achievementCount');
 
   let coins = 0;
   let totalCoins = parseInt(localStorage.getItem('armondTotalCoins') || '0');
@@ -1169,6 +1478,270 @@
   let bestLevel = parseInt(localStorage.getItem('armondBestLevel') || '1');
   let usedCodes = JSON.parse(localStorage.getItem('armondUsedCodes') || '[]');
 
+  /* ===== Streak ===== */
+  let streakData = JSON.parse(localStorage.getItem('armondStreak') || 'null') || {
+    count: 0,
+    lastClaimDate: null,
+    claimedDays: []
+  };
+
+  function getTodayKey() {
+    const d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function getYesterdayKey() {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  const STREAK_REWARDS = [100, 300, 600, 1000, 1500, 2500, 5000];
+  const STREAK_EMOJIS = ['🎁', '🎁', '🎁', '🎁', '🎁', '🎁', '💎'];
+
+  function canClaimStreak() {
+    return streakData.lastClaimDate !== getTodayKey();
+  }
+
+  function updateStreakUI() {
+    const container = document.getElementById('streakDays');
+    container.innerHTML = '';
+    for (let i = 0; i < 7; i++) {
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'streak-day';
+      const dayNum = i + 1;
+      const isClaimed = streakData.claimedDays && streakData.claimedDays.includes(dayNum) && streakData.lastClaimDate === getTodayKey();
+      const isPast = streakData.claimedDays && streakData.claimedDays.includes(dayNum);
+      const isCurrent = (i === streakData.count) && canClaimStreak();
+
+      if (isPast && !isCurrent) dayDiv.classList.add('claimed');
+      if (isCurrent) dayDiv.classList.add('current');
+
+      dayDiv.innerHTML =
+        '<div class="streak-day-num">روز ' + dayNum + '</div>' +
+        '<div class="streak-day-emoji">' + STREAK_EMOJIS[i] + '</div>' +
+        '<div class="streak-day-reward">' + STREAK_REWARDS[i].toLocaleString('en-US') + '</div>';
+
+      container.appendChild(dayDiv);
+    }
+
+    const claimBtn = document.getElementById('streakClaimBtn');
+    const info = document.getElementById('streakInfo');
+
+    if (canClaimStreak()) {
+      claimBtn.disabled = false;
+      claimBtn.textContent = '🎁 دریافت پاداش امروز (' + STREAK_REWARDS[streakData.count] + ' سکه)';
+      info.innerHTML = '🔥 Streak فعلی: <b>' + streakData.count + ' روز</b><br>💡 فردا هم بیا تا پاداش بیشتری بگیری!';
+    } else {
+      claimBtn.disabled = true;
+      claimBtn.textContent = '✅ امروز پاداش گرفتی';
+      info.innerHTML = '🔥 Streak فعلی: <b>' + (streakData.count + 1) + ' روز</b><br>💡 فردا دوباره بیا!';
+    }
+
+    const badge = document.getElementById('streakBadge');
+    if (canClaimStreak()) {
+      badge.classList.add('show');
+    } else {
+      badge.classList.remove('show');
+    }
+  }
+
+  function claimStreak() {
+    if (!canClaimStreak()) return;
+    initAudio();
+
+    const today = getTodayKey();
+    const yesterday = getYesterdayKey();
+
+    // اگه دیروز اومده، streak رو زیاد کن
+    if (streakData.lastClaimDate === yesterday) {
+      streakData.count = Math.min(streakData.count + 1, 6);
+    } else {
+      // اگه نیومده، از اول شروع کن
+      streakData.count = 0;
+      streakData.claimedDays = [];
+    }
+
+    const reward = STREAK_REWARDS[streakData.count];
+    coins += reward;
+    totalCoins += reward;
+    localStorage.setItem('armondCoins', coins);
+
+    streakData.lastClaimDate = today;
+    if (!streakData.claimedDays) streakData.claimedDays = [];
+    if (!streakData.claimedDays.includes(streakData.count + 1)) {
+      streakData.claimedDays.push(streakData.count + 1);
+    }
+    localStorage.setItem('armondStreak', JSON.stringify(streakData));
+
+    saveStats();
+    updateUI();
+    updateStatsUI();
+    updateStreakUI();
+
+    playWinSound();
+    levelToast.innerHTML = '🔥 روز ' + (streakData.count + 1) + ' Streak!<br><span style="font-size:18px;">' + reward.toLocaleString('en-US') + ' سکه پاداش!</span>';
+    levelToast.style.background = 'linear-gradient(135deg, #ff3300, #cc0000)';
+    levelToast.classList.remove('show');
+    void levelToast.offsetWidth;
+    levelToast.classList.add('show');
+    setTimeout(() => {
+      levelToast.style.background = 'linear-gradient(135deg, #ff8c00, #ff3300)';
+    }, 2500);
+
+    checkAchievements();
+  }
+
+  const streakOpenBtn = document.getElementById('streakOpenBtn');
+  const streakTopBtn = document.getElementById('streakTopBtn');
+  const streakOverlay = document.getElementById('streakOverlay');
+  const streakCloseBtn = document.getElementById('streakCloseBtn');
+  const streakClaimBtn = document.getElementById('streakClaimBtn');
+
+  function openStreak() {
+    initAudio(); playShopSound();
+    updateStreakUI();
+    streakOverlay.classList.add('show');
+  }
+
+  streakOpenBtn.addEventListener('click', (e) => { e.stopPropagation(); openStreak(); });
+  streakTopBtn.addEventListener('click', (e) => { e.stopPropagation(); openStreak(); });
+  streakCloseBtn.addEventListener('click', () => { playCancelSound(); streakOverlay.classList.remove('show'); });
+  streakOverlay.addEventListener('click', (e) => {
+    if (e.target === streakOverlay) { playCancelSound(); streakOverlay.classList.remove('show'); }
+  });
+  streakClaimBtn.addEventListener('click', claimStreak);
+
+  /* ===== دستاوردها ===== */
+  const ACHIEVEMENTS = [
+    { id: 'first_click', icon: '🥇', title: 'اولین قدم', desc: 'اولین کلیک رو بزن', reward: 100,
+      check: () => totalClicks >= 1 },
+    { id: 'clicks_100', icon: '🔥', title: '۱۰۰ کلیک زدی!', desc: '۱۰۰ بار روی لوگو بزن', reward: 500,
+      check: () => totalClicks >= 100 },
+    { id: 'clicks_1000', icon: '💥', title: 'کلیک‌باز حرفه‌ای', desc: '۱۰۰۰ بار کلیک کن', reward: 2000,
+      check: () => totalClicks >= 1000 },
+    { id: 'clicks_10000', icon: '🌟', title: 'استاد کلیک', desc: '۱۰,۰۰۰ بار کلیک کن', reward: 10000,
+      check: () => totalClicks >= 10000 },
+    { id: 'coins_10000', icon: '💰', title: 'سکه‌چی', desc: '۱۰,۰۰۰ سکه جمع کن', reward: 1000,
+      check: () => totalCoins >= 10000 },
+    { id: 'coins_100000', icon: '💎', title: 'میلیونر', desc: '۱۰۰,۰۰۰ سکه جمع کن', reward: 10000,
+      check: () => totalCoins >= 100000 },
+    { id: 'level_3', icon: '🟠', title: 'مس‌کار', desc: 'به لول مس برس', reward: 500,
+      check: () => getLevel(coins) >= 3 },
+    { id: 'level_5', icon: '🥇', title: 'طلاساز', desc: 'به لول طلا برس', reward: 2000,
+      check: () => getLevel(coins) >= 5 },
+    { id: 'level_8', icon: '🖤', title: 'ندرایتی', desc: 'به لول ندرایت برس', reward: 10000,
+      check: () => getLevel(coins) >= 8 },
+    { id: 'level_9', icon: '🔥', title: 'افسانه', desc: 'به لول افسانه‌ای برس', reward: 25000,
+      check: () => getLevel(coins) >= 9 },
+    { id: 'streak_3', icon: '🔥', title: '۳ روز Streak', desc: '۳ روز متوالی بیا', reward: 1000,
+      check: () => streakData.count >= 2 && streakData.lastClaimDate === getTodayKey() },
+    { id: 'streak_7', icon: '🏅', title: 'هفته کامل!', desc: '۷ روز متوالی بیا', reward: 10000,
+      check: () => streakData.count >= 6 && streakData.lastClaimDate === getTodayKey() },
+    { id: 'wheel_first', icon: '🎰', title: 'چرخنده', desc: 'اولین بار گردونه رو بچرخون', reward: 200,
+      check: () => localStorage.getItem('armondLastSpin') !== null },
+    { id: 'code_first', icon: '🎁', title: 'کدباز', desc: 'اولین کد سکه رو استفاده کن', reward: 300,
+      check: () => usedCodes.length >= 1 },
+    { id: 'challenge_first', icon: '📅', title: 'چالشگر', desc: 'اولین چالش روزانه رو کامل کن', reward: 1000,
+      check: () => {
+        const d = JSON.parse(localStorage.getItem('armondDailyChallenge') || 'null');
+        return d && d.completed && d.rewardClaimed;
+      }
+    }
+  ];
+
+  let unlockedAchievements = JSON.parse(localStorage.getItem('armondAchievements') || '[]');
+
+  function updateAchievementsUI() {
+    const list = document.getElementById('achievementsList');
+    const unlockedCount = unlockedAchievements.length;
+    const totalCount = ACHIEVEMENTS.length;
+
+    document.getElementById('achievementsProgressText').textContent = unlockedCount + ' از ' + totalCount + ' دستاورد باز شده';
+    document.getElementById('achievementsProgressFill').style.width = (unlockedCount / totalCount * 100) + '%';
+    document.getElementById('achievementCount').textContent = unlockedCount;
+    achievementCountEl.textContent = unlockedCount;
+
+    list.innerHTML = '';
+    ACHIEVEMENTS.forEach(ach => {
+      const isUnlocked = unlockedAchievements.includes(ach.id);
+      const div = document.createElement('div');
+      div.className = 'achievement-item' + (isUnlocked ? ' unlocked' : '');
+      div.innerHTML =
+        '<div class="achievement-icon">' + ach.icon + '</div>' +
+        '<div class="achievement-info">' +
+          '<div class="achievement-title">' + ach.title + '</div>' +
+          '<div class="achievement-desc">' + ach.desc + '</div>' +
+          '<div class="achievement-reward">🎁 پاداش: ' + ach.reward.toLocaleString('en-US') + ' سکه</div>' +
+        '</div>' +
+        '<div class="achievement-status">' + (isUnlocked ? '✅' : '🔒') + '</div>';
+      list.appendChild(div);
+    });
+
+    const badge = document.getElementById('achievementBadge');
+    const lockedCount = totalCount - unlockedCount;
+    if (lockedCount > 0) {
+      badge.textContent = lockedCount;
+      badge.classList.add('show');
+    } else {
+      badge.classList.remove('show');
+    }
+  }
+
+  function checkAchievements() {
+    let newlyUnlocked = [];
+    ACHIEVEMENTS.forEach(ach => {
+      if (!unlockedAchievements.includes(ach.id)) {
+        if (ach.check()) {
+          unlockedAchievements.push(ach.id);
+          coins += ach.reward;
+          totalCoins += ach.reward;
+          newlyUnlocked.push(ach);
+        }
+      }
+    });
+
+    if (newlyUnlocked.length > 0) {
+      localStorage.setItem('armondAchievements', JSON.stringify(unlockedAchievements));
+      localStorage.setItem('armondCoins', coins);
+      saveStats();
+      updateUI();
+      updateStatsUI();
+      updateAchievementsUI();
+
+      // نمایش اولین دستاورد باز شده
+      setTimeout(() => {
+        const ach = newlyUnlocked[0];
+        playAchievementSound();
+        levelToast.innerHTML = '🏆 دستاورد باز شد!<br>' + ach.icon + ' <b>' + ach.title + '</b><br><span style="font-size:15px;">+' + ach.reward.toLocaleString('en-US') + ' سکه</span>';
+        levelToast.style.background = 'linear-gradient(135deg, #ffd700, #ff8c00)';
+        levelToast.style.color = '#1a0a00';
+        levelToast.classList.remove('show');
+        void levelToast.offsetWidth;
+        levelToast.classList.add('show');
+        setTimeout(() => {
+          levelToast.style.background = 'linear-gradient(135deg, #ff8c00, #ff3300)';
+          levelToast.style.color = '#fff';
+        }, 2500);
+      }, 500);
+    }
+  }
+
+  const achievementOpenBtn = document.getElementById('achievementOpenBtn');
+  const achievementsOverlay = document.getElementById('achievementsOverlay');
+  const achievementsCloseBtn = document.getElementById('achievementsCloseBtn');
+
+  achievementOpenBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); initAudio(); playShopSound();
+    updateAchievementsUI();
+    achievementsOverlay.classList.add('show');
+  });
+  achievementsCloseBtn.addEventListener('click', () => { playCancelSound(); achievementsOverlay.classList.remove('show'); });
+  achievementsOverlay.addEventListener('click', (e) => {
+    if (e.target === achievementsOverlay) { playCancelSound(); achievementsOverlay.classList.remove('show'); }
+  });
+
+  /* ===== توابع عمومی ===== */
   function updateStatsUI() {
     totalCoinsEl.textContent = totalCoins.toLocaleString('en-US');
     totalClicksEl.textContent = totalClicks.toLocaleString('en-US');
@@ -1176,6 +1749,8 @@
     const lvl = getLevelName(getLevel(coins));
     currentLevelIcon.textContent = lvl.emoji;
     currentLevelName.textContent = lvl.name;
+    currentStreakEl.textContent = streakData.count + 1;
+    achievementCountEl.textContent = unlockedAchievements.length;
   }
 
   function saveStats() {
@@ -1193,7 +1768,7 @@
     counterValue.textContent = coins.toLocaleString('en-US');
     levelInfo.innerHTML = lvl.emoji + ' <b>' + lvl.name + '</b> (سطح ' + level + ') — هر کلیک <b>' + power + '</b> سکه';
     progressFill.style.width = (coins % COINS_PER_LEVEL) / COINS_PER_LEVEL * 100 + '%';
-    if (level > bestLevel) { bestLevel = level; saveStats(); updateStatsUI(); }
+    if (level > bestLevel) { bestLevel = level; saveStats(); }
     return { level: level, power: power };
   }
 
@@ -1201,6 +1776,11 @@
   if (saved) coins = parseInt(saved);
   updateUI();
   updateStatsUI();
+  updateStreakUI();
+  updateAchievementsUI();
+
+  // چک اولیه دستاوردها
+  setTimeout(() => checkAchievements(), 1000);
 
   function addCoin(e) {
     initAudio();
@@ -1232,6 +1812,9 @@
     floatNum.style.top = (y - 30) + 'px';
     document.body.appendChild(floatNum);
     setTimeout(() => floatNum.remove(), 900);
+
+    // چک دستاوردها (هر ۱۰ کلیک یه بار، برای سرعت)
+    if (totalClicks % 10 === 0) checkAchievements();
   }
 
   function showLevelUp(level) {
@@ -1240,6 +1823,7 @@
     levelToast.classList.remove('show');
     void levelToast.offsetWidth;
     levelToast.classList.add('show');
+    checkAchievements();
   }
 
   resetBtn.addEventListener('click', (e) => {
@@ -1386,13 +1970,7 @@
     playSuccessSound();
     showCodeMessage('✅ تبریک! ' + amount.toLocaleString('en-US') + ' سکه اضافه شد 🎉', 'success');
     codeInput.value = '';
-
-    levelToast.innerHTML = '🎁 ' + amount.toLocaleString('en-US') + ' سکه گرفتی!';
-    levelToast.style.background = 'linear-gradient(135deg, #00c853, #009624)';
-    levelToast.classList.remove('show');
-    void levelToast.offsetWidth;
-    levelToast.classList.add('show');
-    setTimeout(() => { levelToast.style.background = 'linear-gradient(135deg, #ff8c00, #ff3300)'; }, 2000);
+    checkAchievements();
   }
   codeSubmitBtn.addEventListener('click', applyCode);
   codeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') applyCode(); });
@@ -1493,6 +2071,7 @@
       updateStatsUI();
 
       playWinSound();
+      checkAchievements();
 
       levelToast.innerHTML = '🎉 تبریک!<br><span style="font-size:20px;">' + prize.toLocaleString('en-US') + ' سکه گرفتی!</span>';
       levelToast.style.background = 'linear-gradient(135deg, #9c27b0, #6a1b9a)';
@@ -1525,11 +2104,6 @@
     { id: 'coins_5000', title: '💰 چالش سکه', desc: 'مجموعاً <b>۵۰۰۰ سکه</b> جمع کن', target: 5000, reward: 5000, getCurrent: (sc, sco) => totalCoins - sco },
     { id: 'total_clicks_10000', title: '🔥 چالش حرفه‌ای', desc: 'تعداد کل کلیک‌هات به <b>۱۰,۰۰۰</b> برسه', target: 10000, reward: 10000, getCurrent: () => totalClicks }
   ];
-
-  function getTodayKey() {
-    const d = new Date();
-    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-  }
 
   function getDailyChallengeData() {
     const today = getTodayKey();
@@ -1584,6 +2158,7 @@
           updateUI();
           updateStatsUI();
           playWinSound();
+          checkAchievements();
           levelToast.innerHTML = '🎉 چالش روزانه تکمیل شد!<br><span style="font-size:18px;">' + challenge.reward.toLocaleString('en-US') + ' سکه پاداش!</span>';
           levelToast.style.background = 'linear-gradient(135deg, #ff5722, #d84315)';
           levelToast.classList.remove('show');
@@ -1612,4 +2187,4 @@
 </script>
 
 </body>
-</html>
+ </html>
