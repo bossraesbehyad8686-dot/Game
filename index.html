@@ -1007,7 +1007,6 @@
   .theme-preview.green { background: linear-gradient(135deg, #81c784, #1b5e20); }
   .theme-preview.purple { background: linear-gradient(135deg, #ce93d8, #4a148c); }
   .theme-preview.dark { background: linear-gradient(135deg, #888, #111); }
-  .theme-preview.orange { background: linear-gradient(135deg, #ffd700, #ff5500); }
   .theme-name {
     color: #fff;
     font-size: 13px;
@@ -1089,7 +1088,6 @@
   }
   .chest-info b { color: var(--theme-accent); }
 
-  /* صندوقچه شناور */
   .floating-chest {
     position: fixed;
     bottom: 20px;
@@ -1411,17 +1409,17 @@
   <h3>⚙️ سیستم لول‌بندی</h3>
   <ul>
     <li>🪵 <b>چوب</b> — سطح ۱ (شروع)</li>
-    <li>🪨 <b>سنگ</b> — سطح ۲ (۱۰۰۰ سکه)</li>
-    <li>🟠 <b>مس</b> — سطح ۳ (۲۰۰۰ سکه)</li>
-    <li>⚙️ <b>آهن</b> — سطح ۴ (۳۰۰۰ سکه)</li>
-    <li>🥇 <b>طلا</b> — سطح ۵ (۴۰۰۰ سکه)</li>
-    <li>💎 <b>الماس</b> — سطح ۶ (۵۰۰۰ سکه)</li>
-    <li>⚪ <b>پلاتینیوم</b> — سطح ۷ (۶۰۰۰ سکه)</li>
-    <li>🖤 <b>ندرایت</b> — سطح ۸ (۷۰۰۰ سکه)</li>
-    <li>🔥 <b>افسانه‌ای</b> — سطح ۹+ (هر ۱۰۰۰ سکه بالاتر)</li>
+    <li>🪨 <b>سنگ</b> — سطح ۲ (۱۰,۰۰۰ سکه)</li>
+    <li>🟠 <b>مس</b> — سطح ۳ (۲۰,۰۰۰ سکه)</li>
+    <li>⚙️ <b>آهن</b> — سطح ۴ (۳۰,۰۰۰ سکه)</li>
+    <li>🥇 <b>طلا</b> — سطح ۵ (۴۰,۰۰۰ سکه)</li>
+    <li>💎 <b>الماس</b> — سطح ۶ (۵۰,۰۰۰ سکه)</li>
+    <li>⚪ <b>پلاتینیوم</b> — سطح ۷ (۶۰,۰۰۰ سکه)</li>
+    <li>🖤 <b>ندرایت</b> — سطح ۸ (۷۰,۰۰۰ سکه)</li>
+    <li>🔥 <b>افسانه‌ای</b> — سطح ۹+ (هر ۱۰,۰۰۰ سکه بالاتر)</li>
   </ul>
   <h3>🎁 صندوقچه گنج</h3>
-  <p>هر <span class="highlight">۲ ساعت</span> یه صندوقچه ظاهر می‌شه. بازش کن و بین ۵۰ تا ۱۰,۰۰۰ سکه جایزه بگیر!</p>
+  <p>هر <span class="highlight">۲ ساعت</span> یه صندوقچه ظاهر می‌شه. بازش کن و بین ۵۰ تا ۲۵,۰۰۰ سکه جایزه بگیر!</p>
   <h3>🎨 تم‌ها</h3>
   <p>می‌تونی از دکمه <b>🎨</b> گوشه بالا-راست، تم بازی رو عوض کنی. ۵ تم مختلف داری!</p>
 </div>
@@ -1436,10 +1434,8 @@
 
 <div class="level-up-toast" id="levelToast"></div>
 
-<!-- صندوقچه شناور -->
 <div class="floating-chest" id="floatingChest">🎁</div>
 
-<!-- مودال صندوقچه -->
 <div class="shop-overlay" id="chestOverlay">
   <div class="chest-modal">
     <button class="shop-modal-close" id="chestCloseBtn">✕</button>
@@ -1451,7 +1447,6 @@
   </div>
 </div>
 
-<!-- مودال تم‌ها -->
 <div class="shop-overlay" id="themeOverlay">
   <div class="theme-modal">
     <button class="shop-modal-close" id="themeCloseBtn">✕</button>
@@ -1652,7 +1647,7 @@
     'TEST-100': 100, 'TEST-1000': 1000,
   };
 
-  const COINS_PER_LEVEL = 1000;
+  const COINS_PER_LEVEL = 10000;
 
   const LEVEL_NAMES = [
     { name: 'چوب', emoji: '🪵' },
@@ -1738,7 +1733,6 @@
     if (theme !== 'orange' && VALID_THEMES.includes(theme)) {
       document.body.classList.add('theme-' + theme);
     }
-    // آپدیت گزینه فعال
     document.querySelectorAll('.theme-option').forEach(opt => {
       opt.classList.toggle('active', opt.dataset.theme === theme);
     });
@@ -1916,7 +1910,7 @@
   streakClaimBtn.addEventListener('click', claimStreak);
 
   /* ===== صندوقچه گنج ===== */
-  const CHEST_COOLDOWN = 2 * 60 * 60 * 1000; // ۲ ساعت
+  const CHEST_COOLDOWN = 2 * 60 * 60 * 1000;
   const CHEST_PRIZES = [
     { coins: 50, weight: 30 },
     { coins: 100, weight: 25 },
