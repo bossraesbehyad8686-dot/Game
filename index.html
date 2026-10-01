@@ -16,7 +16,6 @@
     transition: background 0.5s ease;
   }
 
-  /* ===== تم‌ها ===== */
   :root {
     --theme-primary: #ff8c00;
     --theme-secondary: #ff5500;
@@ -951,7 +950,6 @@
     flex-shrink: 0;
   }
 
-  /* ===== تم‌ها ===== */
   .theme-modal {
     background: linear-gradient(160deg, #1a1a2a 0%, #0a0a1a 100%);
     border: 3px solid var(--theme-primary);
@@ -1014,7 +1012,6 @@
   }
   .theme-option.active .theme-name { color: #00e676; }
 
-  /* ===== صندوقچه گنج ===== */
   .chest-modal {
     background: linear-gradient(160deg, #3a2a00 0%, #1a0f00 100%);
     border: 3px solid var(--theme-accent);
@@ -1285,9 +1282,9 @@
     .streak-modal h2, .achievements-modal h2, .theme-modal h2, .chest-modal h2 { font-size: 20px; }
     .package { padding: 14px; gap: 8px; }
     .pkg-emoji { font-size: 28px; }
-    .pkg-coins { font-size: 15px; }
-    .pkg-price { font-size: 11px; }
-    .pkg-buy { font-size: 12px; padding: 8px 14px; }
+    .pkg-coins { font-size: 14px; }
+    .pkg-price { font-size: 10px; }
+    .pkg-buy { font-size: 12px; padding: 8px 12px; }
     .wheel-container { width: 240px; height: 240px; }
     .streak-days { grid-template-columns: repeat(4, 1fr); gap: 6px; }
     .streak-day { padding: 8px 4px; }
@@ -1436,6 +1433,7 @@
 
 <div class="floating-chest" id="floatingChest">🎁</div>
 
+<!-- مودال صندوقچه -->
 <div class="shop-overlay" id="chestOverlay">
   <div class="chest-modal">
     <button class="shop-modal-close" id="chestCloseBtn">✕</button>
@@ -1447,6 +1445,7 @@
   </div>
 </div>
 
+<!-- مودال تم‌ها -->
 <div class="shop-overlay" id="themeOverlay">
   <div class="theme-modal">
     <button class="shop-modal-close" id="themeCloseBtn">✕</button>
@@ -1477,11 +1476,13 @@
   </div>
 </div>
 
+<!-- فروشگاه -->
 <div class="shop-overlay" id="shopOverlay">
   <div class="shop-modal">
     <button class="shop-modal-close" id="shopCloseBtn">✕</button>
     <h2>🛒 فروشگاه سکه</h2>
     <p class="shop-subtitle">با پول واقعی، سکه بخر و سریع‌تر پیشرفت کن! 💰</p>
+
     <div class="package" data-coins="1000" data-price="10000">
       <div class="pkg-left">
         <div class="pkg-emoji">🥉</div>
@@ -1492,6 +1493,7 @@
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
+
     <div class="package" data-coins="5000" data-price="45000">
       <div class="pkg-left">
         <div class="pkg-emoji">🥈</div>
@@ -1502,6 +1504,7 @@
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
+
     <div class="package best" data-coins="10000" data-price="80000">
       <div class="pkg-left">
         <div class="pkg-emoji">🥇</div>
@@ -1512,6 +1515,7 @@
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
+
     <div class="package" data-coins="50000" data-price="350000">
       <div class="pkg-left">
         <div class="pkg-emoji">💎</div>
@@ -1522,6 +1526,73 @@
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
+
+    <div class="package" data-coins="100000" data-price="650000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🏆</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">100,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>650,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package" data-coins="500000" data-price="3000000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">👑</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">500,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>3,000,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package best" data-coins="1000000" data-price="5500000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🌟</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">1,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>5,500,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package" data-coins="5000000" data-price="25000000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🔥</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">5,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>25,000,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package" data-coins="10000000" data-price="45000000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">💠</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">10,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>45,000,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package best" data-coins="20000000" data-price="85000000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🌌</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">20,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>85,000,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
     <div class="shop-note">
       💬 برای خرید، روی بسته مورد نظر بزن و به پیوی روبیکا پیام بده:<br>
       <b style="direction:ltr;display:inline-block;margin-top:6px;">@Armondadmin_youtobe_aparat</b>
@@ -1529,6 +1600,7 @@
   </div>
 </div>
 
+<!-- کد سکه -->
 <div class="shop-overlay" id="codeOverlay">
   <div class="code-modal">
     <button class="shop-modal-close" id="codeCloseBtn">✕</button>
@@ -1549,6 +1621,7 @@
   </div>
 </div>
 
+<!-- گردونه شانس -->
 <div class="shop-overlay" id="wheelOverlay">
   <div class="wheel-modal">
     <button class="shop-modal-close" id="wheelCloseBtn">✕</button>
@@ -1565,6 +1638,7 @@
   </div>
 </div>
 
+<!-- چالش روزانه -->
 <div class="shop-overlay" id="challengeOverlay">
   <div class="challenge-modal">
     <button class="shop-modal-close" id="challengeCloseBtn">✕</button>
@@ -1585,6 +1659,7 @@
   </div>
 </div>
 
+<!-- Streak روزانه -->
 <div class="shop-overlay" id="streakOverlay">
   <div class="streak-modal">
     <button class="shop-modal-close" id="streakCloseBtn">✕</button>
@@ -1599,6 +1674,7 @@
   </div>
 </div>
 
+<!-- دستاوردها -->
 <div class="shop-overlay" id="achievementsOverlay">
   <div class="achievements-modal">
     <button class="shop-modal-close" id="achievementsCloseBtn">✕</button>
@@ -1614,6 +1690,7 @@
   </div>
 </div>
 
+<!-- پیام خرید -->
 <div class="buy-modal-overlay" id="buyOverlay">
   <div class="buy-modal">
     <div class="buy-modal-emoji">✅</div>
@@ -1627,6 +1704,7 @@
   </div>
 </div>
 
+<!-- تایید ریست -->
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-box">
     <h3>⚠️ مطمئنی؟</h3>
@@ -1788,7 +1866,6 @@
   let bestLevel = parseInt(localStorage.getItem('armondBestLevel') || '1');
   let usedCodes = JSON.parse(localStorage.getItem('armondUsedCodes') || '[]');
 
-  /* ===== Streak ===== */
   let streakData = JSON.parse(localStorage.getItem('armondStreak') || 'null') || {
     count: 0, lastClaimDate: null, claimedDays: []
   };
