@@ -97,7 +97,7 @@
     transition: all 0.5s ease;
   }
   .counter-value {
-    font-size: 24px; font-weight: 900; color: var(--theme-text);
+    font-size: 22px; font-weight: 900; color: var(--theme-text);
     text-shadow: 0 0 10px var(--theme-glow);
     min-width: 70px; text-align: center; transition: transform 0.15s ease, color 0.5s ease;
   }
@@ -240,7 +240,7 @@
     text-shadow: 0 1px 0 #7a7a7a, 0 2px 0 #6a6a6a, 0 3px 0 #5a5a5a, 0 4px 0 #4a4a4a, 0 5px 0 #3a3a3a, 0 6px 0 #2a2a2a, 0 7px 0 #1a1a1a, 0 8px 15px rgba(0,0,0,0.9);
   }
   .float-number {
-    position: fixed; color: var(--theme-text); font-size: 28px; font-weight: 900;
+    position: fixed; color: var(--theme-text); font-size: 24px; font-weight: 900;
     pointer-events: none;
     text-shadow: 0 0 12px var(--theme-glow);
     animation: floatUp 0.9s ease-out forwards; z-index: 200;
@@ -439,6 +439,7 @@
     font-size: 13px;
     text-align: center;
     margin-bottom: 25px;
+    line-height: 1.7;
   }
   .package {
     background: linear-gradient(135deg, rgba(255, 140, 0, 0.12), rgba(255, 80, 0, 0.05));
@@ -481,7 +482,7 @@
   .pkg-emoji { font-size: 34px; filter: drop-shadow(0 0 10px var(--theme-glow)); }
   .pkg-info { text-align: right; }
   .pkg-coins {
-    color: var(--theme-accent); font-size: 18px; font-weight: bold;
+    color: var(--theme-accent); font-size: 15px; font-weight: bold;
     text-shadow: 0 0 8px var(--theme-glow);
     direction: ltr;
   }
@@ -1155,7 +1156,7 @@
   .stat-icon { font-size: 22px; }
   .stat-label { font-family: Tahoma, sans-serif; font-size: 12px; color: #bba080; }
   .stat-value {
-    font-family: Tahoma, sans-serif; font-size: 17px; font-weight: bold;
+    font-family: Tahoma, sans-serif; font-size: 15px; font-weight: bold;
     color: var(--theme-text); text-shadow: 0 0 8px var(--theme-glow);
     direction: ltr;
   }
@@ -1230,7 +1231,7 @@
     border: 1px solid rgba(0, 200, 80, 0.4);
     border-radius: 12px;
     padding: 14px; margin-bottom: 20px;
-    color: #b0ffd0; font-size: 14px;
+    color: #b0ffd0; font-size: 13px;
   }
   .buy-modal .pkg-summary b { color: #00e676; }
   .buy-modal .admin-id {
@@ -1269,22 +1270,22 @@
     .name { font-size: 36px; }
     .letter { width: 80px; height: 140px; }
     .base-block { width: 80px; }
-    .counter-value { font-size: 20px; }
+    .counter-value { font-size: 16px; }
     .link-btn { padding: 12px 22px; font-size: 15px; }
-    .counter { min-width: 220px; padding: 8px 18px; }
+    .counter { min-width: 260px; padding: 8px 15px; }
     .icon-btn { width: 42px; height: 42px; font-size: 18px; }
-    .stat-value { font-size: 15px; }
+    .stat-value { font-size: 12px; }
     .about-box { font-size: 13px; padding: 20px 15px; }
     .main-btn { font-size: 12px; padding: 11px 18px; }
     .shop-modal, .code-modal, .wheel-modal, .challenge-modal,
-    .streak-modal, .achievements-modal, .theme-modal, .chest-modal { padding: 25px 18px; }
+    .streak-modal, .achievements-modal, .theme-modal, .chest-modal { padding: 25px 15px; }
     .shop-modal h2, .code-modal h2, .wheel-modal h2, .challenge-modal h2,
     .streak-modal h2, .achievements-modal h2, .theme-modal h2, .chest-modal h2 { font-size: 20px; }
-    .package { padding: 14px; gap: 8px; }
-    .pkg-emoji { font-size: 28px; }
-    .pkg-coins { font-size: 14px; }
+    .package { padding: 12px; gap: 6px; }
+    .pkg-emoji { font-size: 24px; }
+    .pkg-coins { font-size: 11px; }
     .pkg-price { font-size: 10px; }
-    .pkg-buy { font-size: 12px; padding: 8px 12px; }
+    .pkg-buy { font-size: 11px; padding: 7px 10px; }
     .wheel-container { width: 240px; height: 240px; }
     .streak-days { grid-template-columns: repeat(4, 1fr); gap: 6px; }
     .streak-day { padding: 8px 4px; }
@@ -1325,7 +1326,7 @@
     <div class="coin-icon">₿</div>
     <div class="counter-value" id="counterValue">0</div>
   </div>
-  <div class="level-info" id="levelInfo">🪵 <b>چوب</b> (سطح 1) — هر کلیک <b>1</b> سکه</div>
+  <div class="level-info" id="levelInfo">🪵 <b>چوب</b> (سطح 1) — هر کلیک <b>1000</b> سکه</div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
@@ -1417,6 +1418,8 @@
   </ul>
   <h3>🎁 صندوقچه گنج</h3>
   <p>هر <span class="highlight">۲ ساعت</span> یه صندوقچه ظاهر می‌شه. بازش کن و بین ۵۰ تا ۲۵,۰۰۰ سکه جایزه بگیر!</p>
+  <h3>💰 فروشگاه سکه</h3>
+  <p>نرخ فروش: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
   <h3>🎨 تم‌ها</h3>
   <p>می‌تونی از دکمه <b>🎨</b> گوشه بالا-راست، تم بازی رو عوض کنی. ۵ تم مختلف داری!</p>
 </div>
@@ -1481,113 +1484,81 @@
   <div class="shop-modal">
     <button class="shop-modal-close" id="shopCloseBtn">✕</button>
     <h2>🛒 فروشگاه سکه</h2>
-    <p class="shop-subtitle">با پول واقعی، سکه بخر و سریع‌تر پیشرفت کن! 💰</p>
+    <p class="shop-subtitle">با پول واقعی، سکه بخر و سریع‌تر پیشرفت کن! 💰<br>
+    <span style="color: var(--theme-accent); font-weight: bold;">نرخ: هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
 
-    <div class="package" data-coins="1000" data-price="10000">
+    <div class="package" data-coins="100000000" data-price="1000">
       <div class="pkg-left">
         <div class="pkg-emoji">🥉</div>
         <div class="pkg-info">
-          <div class="pkg-coins">1,000 سکه</div>
+          <div class="pkg-coins">100,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>1,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package" data-coins="500000000" data-price="5000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🥈</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">500,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>5,000 تومان</b></div>
+        </div>
+      </div>
+      <button class="pkg-buy">خرید</button>
+    </div>
+
+    <div class="package best" data-coins="1000000000" data-price="10000">
+      <div class="pkg-left">
+        <div class="pkg-emoji">🥇</div>
+        <div class="pkg-info">
+          <div class="pkg-coins">1,000,000,000 سکه</div>
           <div class="pkg-price">قیمت: <b>10,000 تومان</b></div>
         </div>
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
 
-    <div class="package" data-coins="5000" data-price="45000">
-      <div class="pkg-left">
-        <div class="pkg-emoji">🥈</div>
-        <div class="pkg-info">
-          <div class="pkg-coins">5,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>45,000 تومان</b></div>
-        </div>
-      </div>
-      <button class="pkg-buy">خرید</button>
-    </div>
-
-    <div class="package best" data-coins="10000" data-price="80000">
-      <div class="pkg-left">
-        <div class="pkg-emoji">🥇</div>
-        <div class="pkg-info">
-          <div class="pkg-coins">10,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>80,000 تومان</b></div>
-        </div>
-      </div>
-      <button class="pkg-buy">خرید</button>
-    </div>
-
-    <div class="package" data-coins="50000" data-price="350000">
+    <div class="package" data-coins="5000000000" data-price="50000">
       <div class="pkg-left">
         <div class="pkg-emoji">💎</div>
         <div class="pkg-info">
-          <div class="pkg-coins">50,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>350,000 تومان</b></div>
+          <div class="pkg-coins">5,000,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>50,000 تومان</b></div>
         </div>
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
 
-    <div class="package" data-coins="100000" data-price="650000">
+    <div class="package" data-coins="10000000000" data-price="100000">
       <div class="pkg-left">
         <div class="pkg-emoji">🏆</div>
         <div class="pkg-info">
-          <div class="pkg-coins">100,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>650,000 تومان</b></div>
+          <div class="pkg-coins">10,000,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>100,000 تومان</b></div>
         </div>
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
 
-    <div class="package" data-coins="500000" data-price="3000000">
+    <div class="package" data-coins="50000000000" data-price="500000">
       <div class="pkg-left">
         <div class="pkg-emoji">👑</div>
         <div class="pkg-info">
-          <div class="pkg-coins">500,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>3,000,000 تومان</b></div>
+          <div class="pkg-coins">50,000,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>500,000 تومان</b></div>
         </div>
       </div>
       <button class="pkg-buy">خرید</button>
     </div>
 
-    <div class="package best" data-coins="1000000" data-price="5500000">
+    <div class="package best" data-coins="100000000000" data-price="1000000">
       <div class="pkg-left">
         <div class="pkg-emoji">🌟</div>
         <div class="pkg-info">
-          <div class="pkg-coins">1,000,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>5,500,000 تومان</b></div>
-        </div>
-      </div>
-      <button class="pkg-buy">خرید</button>
-    </div>
-
-    <div class="package" data-coins="5000000" data-price="25000000">
-      <div class="pkg-left">
-        <div class="pkg-emoji">🔥</div>
-        <div class="pkg-info">
-          <div class="pkg-coins">5,000,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>25,000,000 تومان</b></div>
-        </div>
-      </div>
-      <button class="pkg-buy">خرید</button>
-    </div>
-
-    <div class="package" data-coins="10000000" data-price="45000000">
-      <div class="pkg-left">
-        <div class="pkg-emoji">💠</div>
-        <div class="pkg-info">
-          <div class="pkg-coins">10,000,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>45,000,000 تومان</b></div>
-        </div>
-      </div>
-      <button class="pkg-buy">خرید</button>
-    </div>
-
-    <div class="package best" data-coins="20000000" data-price="85000000">
-      <div class="pkg-left">
-        <div class="pkg-emoji">🌌</div>
-        <div class="pkg-info">
-          <div class="pkg-coins">20,000,000 سکه</div>
-          <div class="pkg-price">قیمت: <b>85,000,000 تومان</b></div>
+          <div class="pkg-coins">100,000,000,000 سکه</div>
+          <div class="pkg-price">قیمت: <b>1,000,000 تومان</b></div>
         </div>
       </div>
       <button class="pkg-buy">خرید</button>
@@ -1696,7 +1667,7 @@
     <div class="buy-modal-emoji">✅</div>
     <h3>سفارش ثبت شد!</h3>
     <p>برای تکمیل خرید، به پیوی روبیکا پیام بده و بسته انتخابی رو اعلام کن.</p>
-    <div class="pkg-summary" id="pkgSummary">بسته انتخابی: <b>1,000 سکه</b> — <b>10,000 تومان</b></div>
+    <div class="pkg-summary" id="pkgSummary">بسته انتخابی: <b>100,000,000 سکه</b> — <b>1,000 تومان</b></div>
     <p style="margin-bottom:6px;">آیدی پیوی روبیکا:</p>
     <div class="admin-id" id="adminId">@Armondadmin_youtobe_aparat</div>
     <a href="https://rubika.ir/Armondadmin_youtobe_aparat" target="_blank" rel="noopener" class="buy-modal-btn">💬 رفتن به پیوی روبیکا</a>
@@ -1726,6 +1697,7 @@
   };
 
   const COINS_PER_LEVEL = 10000;
+  const CLICK_POWER_MULTIPLIER = 1000;
 
   const LEVEL_NAMES = [
     { name: 'چوب', emoji: '🪵' },
@@ -2236,10 +2208,10 @@
 
   function updateUI() {
     const level = getLevel(coins);
-    const power = level;
+    const power = level * CLICK_POWER_MULTIPLIER;
     const lvl = getLevelName(level);
     counterValue.textContent = coins.toLocaleString('en-US');
-    levelInfo.innerHTML = lvl.emoji + ' <b>' + lvl.name + '</b> (سطح ' + level + ') — هر کلیک <b>' + power + '</b> سکه';
+    levelInfo.innerHTML = lvl.emoji + ' <b>' + lvl.name + '</b> (سطح ' + level + ') — هر کلیک <b>' + power.toLocaleString('en-US') + '</b> سکه';
     progressFill.style.width = (coins % COINS_PER_LEVEL) / COINS_PER_LEVEL * 100 + '%';
     if (level > bestLevel) { bestLevel = level; saveStats(); }
     return { level: level, power: power };
@@ -2257,7 +2229,7 @@
   function addCoin(e) {
     initAudio();
     const beforeLevel = getLevel(coins);
-    const power = beforeLevel;
+    const power = beforeLevel * CLICK_POWER_MULTIPLIER;
     coins += power;
     totalCoins += power;
     totalClicks += 1;
@@ -2273,7 +2245,7 @@
 
     const floatNum = document.createElement('div');
     floatNum.className = 'float-number';
-    floatNum.textContent = '+' + power;
+    floatNum.textContent = '+' + power.toLocaleString('en-US');
 
     let x, y;
     if (e.touches && e.touches.length > 0) { x = e.touches[0].clientX; y = e.touches[0].clientY; }
@@ -2290,7 +2262,7 @@
 
   function showLevelUp(level) {
     const lvl = getLevelName(level);
-    levelToast.innerHTML = '🎉 لول ' + level + ' — ' + lvl.emoji + ' ' + lvl.name + '!<br><span style="font-size:16px;">هر کلیک حالا ' + level + ' سکه می‌ده</span>';
+    levelToast.innerHTML = '🎉 لول ' + level + ' — ' + lvl.emoji + ' ' + lvl.name + '!<br><span style="font-size:16px;">هر کلیک حالا ' + (level * CLICK_POWER_MULTIPLIER).toLocaleString('en-US') + ' سکه می‌ده</span>';
     levelToast.classList.remove('show');
     void levelToast.offsetWidth;
     levelToast.classList.add('show');
@@ -2658,4 +2630,4 @@
 </script>
 
 </body>
- </html>
+</html>
