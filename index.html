@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Armond Mosavian Clicker</title>
+<!-- PWA Meta Tags -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff8c00">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Armond">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; }
@@ -661,7 +671,6 @@
     box-shadow: none;
   }
 
-  /* ===== مودال اشتراک‌گذاری ===== */
   .share-modal {
     background: linear-gradient(160deg, #0a1f3a 0%, #051020 100%);
     border: 3px solid #2196f3;
@@ -1574,8 +1583,7 @@
 </style>
 </head>
 <body>
-
-<div class="bg"></div>
+ <div class="bg"></div>
 <div class="spark" style="top:20%;left:15%"></div>
 <div class="spark" style="top:30%;left:80%"></div>
 <div class="spark" style="top:70%;left:20%"></div>
@@ -1713,7 +1721,6 @@
 
 <div class="floating-chest" id="floatingChest">🎁</div>
 
-<!-- مودال صندوقچه -->
 <div class="shop-overlay" id="chestOverlay">
   <div class="chest-modal">
     <button class="shop-modal-close" id="chestCloseBtn">✕</button>
@@ -1725,7 +1732,6 @@
   </div>
 </div>
 
-<!-- مودال تم‌ها -->
 <div class="shop-overlay" id="themeOverlay">
   <div class="theme-modal">
     <button class="shop-modal-close" id="themeCloseBtn">✕</button>
@@ -1756,7 +1762,6 @@
   </div>
 </div>
 
-<!-- فروشگاه -->
 <div class="shop-overlay" id="shopOverlay">
   <div class="shop-modal">
     <button class="shop-modal-close" id="shopCloseBtn">✕</button>
@@ -1848,7 +1853,6 @@
   </div>
 </div>
 
-<!-- مودال فروش سکه -->
 <div class="shop-overlay" id="sellOverlay">
   <div class="sell-modal">
     <button class="shop-modal-close" id="sellCloseBtn">✕</button>
@@ -1886,7 +1890,6 @@
   </div>
 </div>
 
-<!-- مودال اشتراک‌گذاری -->
 <div class="shop-overlay" id="shareOverlay">
   <div class="share-modal">
     <button class="shop-modal-close" id="shareCloseBtn">✕</button>
@@ -1928,7 +1931,6 @@
   </div>
 </div>
 
-<!-- کد سکه -->
 <div class="shop-overlay" id="codeOverlay">
   <div class="code-modal">
     <button class="shop-modal-close" id="codeCloseBtn">✕</button>
@@ -1949,7 +1951,6 @@
   </div>
 </div>
 
-<!-- گردونه شانس -->
 <div class="shop-overlay" id="wheelOverlay">
   <div class="wheel-modal">
     <button class="shop-modal-close" id="wheelCloseBtn">✕</button>
@@ -1966,7 +1967,6 @@
   </div>
 </div>
 
-<!-- چالش روزانه -->
 <div class="shop-overlay" id="challengeOverlay">
   <div class="challenge-modal">
     <button class="shop-modal-close" id="challengeCloseBtn">✕</button>
@@ -1987,7 +1987,6 @@
   </div>
 </div>
 
-<!-- Streak روزانه -->
 <div class="shop-overlay" id="streakOverlay">
   <div class="streak-modal">
     <button class="shop-modal-close" id="streakCloseBtn">✕</button>
@@ -2002,7 +2001,6 @@
   </div>
 </div>
 
-<!-- دستاوردها -->
 <div class="shop-overlay" id="achievementsOverlay">
   <div class="achievements-modal">
     <button class="shop-modal-close" id="achievementsCloseBtn">✕</button>
@@ -2018,7 +2016,6 @@
   </div>
 </div>
 
-<!-- پیام خرید -->
 <div class="buy-modal-overlay" id="buyOverlay">
   <div class="buy-modal">
     <div class="buy-modal-emoji">✅</div>
@@ -2032,7 +2029,6 @@
   </div>
 </div>
 
-<!-- تایید ریست -->
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-box">
     <h3>⚠️ مطمئنی؟</h3>
@@ -2096,7 +2092,6 @@
     return { name: 'افسانه‌ای', emoji: '🔥' };
   }
 
-  /* ===== صدا ===== */
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   let audioCtx = null;
   let soundEnabled = true;
@@ -2151,7 +2146,6 @@
     if (soundEnabled) playClickSound();
   });
 
-  /* ===== تم‌ها ===== */
   const themeBtn = document.getElementById('themeBtn');
   const themeOverlay = document.getElementById('themeOverlay');
   const themeCloseBtn = document.getElementById('themeCloseBtn');
@@ -2194,7 +2188,6 @@
     });
   });
 
-  /* ===== بازی ===== */
   const clickArea = document.getElementById('clickArea');
   const counterValue = document.getElementById('counterValue');
   const levelInfo = document.getElementById('levelInfo');
@@ -2339,7 +2332,6 @@
   });
   streakClaimBtn.addEventListener('click', claimStreak);
 
-  /* ===== صندوقچه گنج ===== */
   const CHEST_COOLDOWN = 2 * 60 * 60 * 1000;
   const CHEST_PRIZES = [
     { coins: 50, weight: 30 },
@@ -2454,7 +2446,6 @@
     if (e.target === chestOverlay) { playCancelSound(); chestOverlay.classList.remove('show'); }
   });
 
-  /* ===== دستاوردها ===== */
   const ACHIEVEMENTS = [
     { id: 'first_click', icon: '🥇', title: 'اولین قدم', desc: 'اولین کلیک رو بزن', reward: 100, check: () => totalClicks >= 1 },
     { id: 'clicks_100', icon: '🔥', title: '۱۰۰ کلیک زدی!', desc: '۱۰۰ بار روی لوگو بزن', reward: 500, check: () => totalClicks >= 100 },
@@ -2569,7 +2560,6 @@
     if (e.target === achievementsOverlay) { playCancelSound(); achievementsOverlay.classList.remove('show'); }
   });
 
-  /* ===== توابع عمومی ===== */
   function updateStatsUI() {
     totalCoinsEl.textContent = totalCoins.toLocaleString('en-US');
     totalClicksEl.textContent = totalClicks.toLocaleString('en-US');
@@ -2694,7 +2684,6 @@
     addCoin(e);
   }, { passive: false });
 
-  /* ===== فروشگاه ===== */
   const shopOpenBtn = document.getElementById('shopOpenBtn');
   const shopOverlay = document.getElementById('shopOverlay');
   const shopCloseBtn = document.getElementById('shopCloseBtn');
@@ -2751,7 +2740,6 @@
   setupCopy(adminId);
   setupCopy(adminIdInline);
 
-  /* ===== کد سکه ===== */
   const codeOpenBtn = document.getElementById('codeOpenBtn');
   const codeOverlay = document.getElementById('codeOverlay');
   const codeCloseBtn = document.getElementById('codeCloseBtn');
@@ -2801,7 +2789,6 @@
   codeSubmitBtn.addEventListener('click', applyCode);
   codeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') applyCode(); });
 
-  /* ===== گردونه شانس ===== */
   const wheelOpenBtn = document.getElementById('wheelOpenBtn');
   const wheelOverlay = document.getElementById('wheelOverlay');
   const wheelCloseBtn = document.getElementById('wheelCloseBtn');
@@ -2912,7 +2899,6 @@
     }, 5200);
   });
 
-  /* ===== چالش روزانه ===== */
   const challengeOpenBtn = document.getElementById('challengeOpenBtn');
   const challengeOverlay = document.getElementById('challengeOverlay');
   const challengeCloseBtn = document.getElementById('challengeCloseBtn');
@@ -3011,7 +2997,6 @@
 
   updateChallengeProgress();
 
-  /* ===== فروش سکه ===== */
   const SELL_RATE = 100000000;
   const SELL_PRICE = 1000;
 
@@ -3131,7 +3116,6 @@
     }, 1500);
   });
 
-  /* ===== اشتراک‌گذاری رکورد ===== */
   const shareOpenBtn = document.getElementById('shareOpenBtn');
   const shareOverlay = document.getElementById('shareOverlay');
   const shareCloseBtn = document.getElementById('shareCloseBtn');
@@ -3210,7 +3194,6 @@
     playSuccessSound();
     localStorage.setItem('armondFirstShare', 'true');
     checkAchievements();
-    // تلاش برای باز کردن روبیکا
     window.open('https://rubika.ir/share?text=' + text, '_blank');
   });
 
@@ -3219,31 +3202,26 @@
     localStorage.setItem('armondFirstShare', 'true');
     checkAchievements();
 
-    // ساخت تصویر با Canvas
     const canvas = document.createElement('canvas');
     canvas.width = 800;
     canvas.height = 900;
     const ctx = canvas.getContext('2d');
 
-    // پس‌زمینه گرادیانت
     const grad = ctx.createLinearGradient(0, 0, 800, 900);
     grad.addColorStop(0, '#1a0f05');
     grad.addColorStop(1, '#0a0a0a');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, 800, 900);
 
-    // حاشیه
     ctx.strokeStyle = '#ffd700';
     ctx.lineWidth = 4;
     ctx.strokeRect(20, 20, 760, 860);
 
-    // عنوان
     ctx.fillStyle = '#ffd700';
     ctx.font = 'bold 38px Tahoma, Arial';
     ctx.textAlign = 'center';
     ctx.fillText('🎮 Armond Mosavian Clicker', 400, 100);
 
-    // خط جداکننده
     ctx.strokeStyle = '#ff8c00';
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -3251,7 +3229,6 @@
     ctx.lineTo(720, 130);
     ctx.stroke();
 
-    // آمار
     const level = getLevel(coins);
     const lvl = getLevelName(level);
     ctx.fillStyle = '#ffb300';
@@ -3279,14 +3256,12 @@
       ctx.fillText(stat.value, 380, y);
     });
 
-    // خط جداکننده پایین
     ctx.strokeStyle = '#ff8c00';
     ctx.beginPath();
     ctx.moveTo(80, 620);
     ctx.lineTo(720, 620);
     ctx.stroke();
 
-    // لینک بازی
     ctx.fillStyle = '#64b5f6';
     ctx.font = 'bold 22px Tahoma, Arial';
     ctx.textAlign = 'center';
@@ -3295,17 +3270,14 @@
     ctx.font = 'bold 20px Tahoma, Arial';
     ctx.fillText('bossraesbehyad8686-dot.github.io/Game', 400, 710);
 
-    // آیدی
     ctx.fillStyle = '#ffd700';
     ctx.font = 'bold 20px Tahoma, Arial';
     ctx.fillText('📱 @Armondadmin_youtobe_aparat', 400, 770);
 
-    // متن پایین
     ctx.fillStyle = '#bba080';
     ctx.font = '18px Tahoma, Arial';
     ctx.fillText('🐹 Armond Mosavian Clicker — بازی کلیکری', 400, 830);
 
-    // دانلود
     canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -3326,6 +3298,15 @@
       }, 2500);
     }, 'image/png');
   });
+
+  // PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker registered'))
+        .catch(err => console.log('❌ Service Worker error:', err));
+    });
+  }
 </script>
 
 </body>
