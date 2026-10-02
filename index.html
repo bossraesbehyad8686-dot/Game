@@ -1326,7 +1326,7 @@
     <div class="coin-icon">₿</div>
     <div class="counter-value" id="counterValue">0</div>
   </div>
-  <div class="level-info" id="levelInfo">🪵 <b>چوب</b> (سطح 1) — هر کلیک <b>1000</b> سکه</div>
+  <div class="level-info" id="levelInfo">🪵 <b>چوب</b> (سطح 1) — هر کلیک <b>1</b> سکه</div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
@@ -1406,15 +1406,15 @@
   <p><b>Armond Mosavian Clicker</b> یه بازی <span class="highlight">کلیکری (Clicker)</span> الهام‌گرفته از <b>Hamster Kombat</b>ه. با ضربه زدن روی لوگو، سکه جمع می‌کنی و هرچی بیشتر بزنی، لولت بالاتر می‌ره.</p>
   <h3>⚙️ سیستم لول‌بندی</h3>
   <ul>
-    <li>🪵 <b>چوب</b> — سطح ۱ (شروع)</li>
-    <li>🪨 <b>سنگ</b> — سطح ۲ (۱۰,۰۰۰ سکه)</li>
-    <li>🟠 <b>مس</b> — سطح ۳ (۲۰,۰۰۰ سکه)</li>
-    <li>⚙️ <b>آهن</b> — سطح ۴ (۳۰,۰۰۰ سکه)</li>
-    <li>🥇 <b>طلا</b> — سطح ۵ (۴۰,۰۰۰ سکه)</li>
-    <li>💎 <b>الماس</b> — سطح ۶ (۵۰,۰۰۰ سکه)</li>
-    <li>⚪ <b>پلاتینیوم</b> — سطح ۷ (۶۰,۰۰۰ سکه)</li>
-    <li>🖤 <b>ندرایت</b> — سطح ۸ (۷۰,۰۰۰ سکه)</li>
-    <li>🔥 <b>افسانه‌ای</b> — سطح ۹+ (هر ۱۰,۰۰۰ سکه بالاتر)</li>
+    <li>🪵 <b>چوب</b> — سطح ۱ — هر کلیک ۱ سکه</li>
+    <li>🪨 <b>سنگ</b> — سطح ۲ — هر کلیک ۲ سکه (۱۰,۰۰۰ سکه)</li>
+    <li>🟠 <b>مس</b> — سطح ۳ — هر کلیک ۳ سکه (۲۰,۰۰۰ سکه)</li>
+    <li>⚙️ <b>آهن</b> — سطح ۴ — هر کلیک ۴ سکه (۳۰,۰۰۰ سکه)</li>
+    <li>🥇 <b>طلا</b> — سطح ۵ — هر کلیک ۵ سکه (۴۰,۰۰۰ سکه)</li>
+    <li>💎 <b>الماس</b> — سطح ۶ — هر کلیک ۶ سکه (۵۰,۰۰۰ سکه)</li>
+    <li>⚪ <b>پلاتینیوم</b> — سطح ۷ — هر کلیک ۷ سکه (۶۰,۰۰۰ سکه)</li>
+    <li>🖤 <b>ندرایت</b> — سطح ۸ — هر کلیک ۸ سکه (۷۰,۰۰۰ سکه)</li>
+    <li>🔥 <b>افسانه‌ای</b> — سطح ۹+ — هر کلیک ۹، ۱۰، ۱۱، ... سکه</li>
   </ul>
   <h3>🎁 صندوقچه گنج</h3>
   <p>هر <span class="highlight">۲ ساعت</span> یه صندوقچه ظاهر می‌شه. بازش کن و بین ۵۰ تا ۲۵,۰۰۰ سکه جایزه بگیر!</p>
@@ -1697,7 +1697,6 @@
   };
 
   const COINS_PER_LEVEL = 10000;
-  const CLICK_POWER_MULTIPLIER = 1000;
 
   const LEVEL_NAMES = [
     { name: 'چوب', emoji: '🪵' },
@@ -2208,10 +2207,10 @@
 
   function updateUI() {
     const level = getLevel(coins);
-    const power = level * CLICK_POWER_MULTIPLIER;
+    const power = level;
     const lvl = getLevelName(level);
     counterValue.textContent = coins.toLocaleString('en-US');
-    levelInfo.innerHTML = lvl.emoji + ' <b>' + lvl.name + '</b> (سطح ' + level + ') — هر کلیک <b>' + power.toLocaleString('en-US') + '</b> سکه';
+    levelInfo.innerHTML = lvl.emoji + ' <b>' + lvl.name + '</b> (سطح ' + level + ') — هر کلیک <b>' + power + '</b> سکه';
     progressFill.style.width = (coins % COINS_PER_LEVEL) / COINS_PER_LEVEL * 100 + '%';
     if (level > bestLevel) { bestLevel = level; saveStats(); }
     return { level: level, power: power };
@@ -2229,7 +2228,7 @@
   function addCoin(e) {
     initAudio();
     const beforeLevel = getLevel(coins);
-    const power = beforeLevel * CLICK_POWER_MULTIPLIER;
+    const power = beforeLevel;
     coins += power;
     totalCoins += power;
     totalClicks += 1;
@@ -2245,7 +2244,7 @@
 
     const floatNum = document.createElement('div');
     floatNum.className = 'float-number';
-    floatNum.textContent = '+' + power.toLocaleString('en-US');
+    floatNum.textContent = '+' + power;
 
     let x, y;
     if (e.touches && e.touches.length > 0) { x = e.touches[0].clientX; y = e.touches[0].clientY; }
@@ -2262,7 +2261,7 @@
 
   function showLevelUp(level) {
     const lvl = getLevelName(level);
-    levelToast.innerHTML = '🎉 لول ' + level + ' — ' + lvl.emoji + ' ' + lvl.name + '!<br><span style="font-size:16px;">هر کلیک حالا ' + (level * CLICK_POWER_MULTIPLIER).toLocaleString('en-US') + ' سکه می‌ده</span>';
+    levelToast.innerHTML = '🎉 لول ' + level + ' — ' + lvl.emoji + ' ' + lvl.name + '!<br><span style="font-size:16px;">هر کلیک حالا ' + level + ' سکه می‌ده</span>';
     levelToast.classList.remove('show');
     void levelToast.offsetWidth;
     levelToast.classList.add('show');
@@ -2630,4 +2629,4 @@
 </script>
 
 </body>
- </html>
+</html>
