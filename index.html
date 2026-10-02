@@ -387,6 +387,13 @@
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 8px 20px rgba(0,0,0,0.5);
   }
   .achievement-open-btn:hover { transform: translateY(-3px) scale(1.05); }
+  .share-open-btn {
+    background: linear-gradient(135deg, #2196f3, #0d47a1);
+    color: #fff;
+    border-color: #64b5f6;
+    box-shadow: 0 0 25px rgba(33, 150, 243, 0.6), 0 8px 20px rgba(0,0,0,0.5);
+  }
+  .share-open-btn:hover { transform: translateY(-3px) scale(1.05); }
 
   .achievement-badge {
     position: absolute;
@@ -653,6 +660,116 @@
     opacity: 0.6;
     box-shadow: none;
   }
+
+  /* ===== مودال اشتراک‌گذاری ===== */
+  .share-modal {
+    background: linear-gradient(160deg, #0a1f3a 0%, #051020 100%);
+    border: 3px solid #2196f3;
+    border-radius: 25px;
+    padding: 30px 25px;
+    max-width: 520px; width: 100%;
+    box-shadow: 0 0 60px rgba(33, 150, 243, 0.6);
+    font-family: Tahoma, sans-serif;
+    animation: popIn 0.35s ease;
+    position: relative;
+    text-align: center;
+  }
+  .share-modal h2 {
+    color: #64b5f6; font-size: 24px;
+    margin-bottom: 8px; text-shadow: 0 0 15px rgba(33, 150, 243, 0.8);
+  }
+  .share-subtitle {
+    color: #b0d4f1; font-size: 13px; margin-bottom: 20px; line-height: 1.8;
+  }
+  .share-preview {
+    background: linear-gradient(160deg, #1a0f05 0%, #0a0a0a 100%);
+    border: 2px solid var(--theme-accent);
+    border-radius: 18px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 30px var(--theme-glow);
+    text-align: center;
+  }
+  .share-preview-title {
+    color: var(--theme-accent);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px var(--theme-glow);
+  }
+  .share-preview-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .share-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--theme-glow);
+  }
+  .share-stat-label {
+    color: #bba080;
+    font-size: 13px;
+  }
+  .share-stat-value {
+    color: var(--theme-text);
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 8px var(--theme-glow);
+    direction: ltr;
+  }
+  .share-preview-footer {
+    color: var(--theme-accent);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--theme-glow);
+    direction: ltr;
+  }
+  .share-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .share-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 14px;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #fff;
+  }
+  .share-btn.download {
+    background: linear-gradient(135deg, #2196f3, #0d47a1);
+    box-shadow: 0 5px 20px rgba(33, 150, 243, 0.6);
+  }
+  .share-btn.download:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(33, 150, 243, 0.9); }
+  .share-btn.rubika {
+    background: linear-gradient(135deg, #00bfff, #0066ff);
+    box-shadow: 0 5px 20px rgba(0, 120, 255, 0.6);
+  }
+  .share-btn.rubika:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0, 120, 255, 0.9); }
+  .share-btn.copy {
+    background: linear-gradient(135deg, #ff8c00, #ff5500);
+    box-shadow: 0 5px 20px var(--theme-glow);
+  }
+  .share-btn.copy:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--theme-glow); }
 
   .code-modal {
     background: linear-gradient(160deg, #0a2a1a 0%, #051a0a 100%);
@@ -1428,10 +1545,10 @@
     .main-btn { font-size: 12px; padding: 11px 18px; }
     .shop-modal, .code-modal, .wheel-modal, .challenge-modal,
     .streak-modal, .achievements-modal, .theme-modal, .chest-modal,
-    .sell-modal { padding: 25px 15px; }
+    .sell-modal, .share-modal { padding: 25px 15px; }
     .shop-modal h2, .code-modal h2, .wheel-modal h2, .challenge-modal h2,
     .streak-modal h2, .achievements-modal h2, .theme-modal h2, .chest-modal h2,
-    .sell-modal h2 { font-size: 20px; }
+    .sell-modal h2, .share-modal h2 { font-size: 20px; }
     .package { padding: 12px; gap: 6px; }
     .pkg-emoji { font-size: 24px; }
     .pkg-coins { font-size: 11px; }
@@ -1450,6 +1567,9 @@
     .theme-grid { gap: 8px; }
     .theme-option { padding: 14px 8px; }
     .theme-preview { width: 40px; height: 40px; }
+    .share-btn { font-size: 12px; padding: 12px 14px; min-width: 120px; }
+    .share-preview { padding: 20px 15px; }
+    .share-stat-value { font-size: 13px; }
   }
 </style>
 </head>
@@ -1514,6 +1634,7 @@
   <button class="main-btn challenge-open-btn" id="challengeOpenBtn">📅 چالش روزانه</button>
   <button class="main-btn streak-open-btn" id="streakOpenBtn">🔥 Streak روزانه</button>
   <button class="main-btn achievement-open-btn" id="achievementOpenBtn">🏆 دستاوردها<span class="achievement-badge" id="achievementBadge">0</span></button>
+  <button class="main-btn share-open-btn" id="shareOpenBtn">📤 اشتراک‌گذاری رکورد</button>
 </div>
 
 <div class="stats-box">
@@ -1574,6 +1695,8 @@
   <p>نرخ خرید: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
   <h3>💸 فروش سکه</h3>
   <p>سکه‌هات رو به ما بفروش! نرخ فروش: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
+  <h3>📤 اشتراک‌گذاری رکورد</h3>
+  <p>می‌تونی عکس از <span class="highlight">رکوردت</span> بسازی و توی روبیکا یا آپارات به اشتراک بذاری!</p>
   <h3>🎨 تم‌ها</h3>
   <p>می‌تونی از دکمه <b>🎨</b> گوشه بالا-راست، تم بازی رو عوض کنی. ۵ تم مختلف داری!</p>
 </div>
@@ -1763,6 +1886,48 @@
   </div>
 </div>
 
+<!-- مودال اشتراک‌گذاری -->
+<div class="shop-overlay" id="shareOverlay">
+  <div class="share-modal">
+    <button class="shop-modal-close" id="shareCloseBtn">✕</button>
+    <h2>📤 اشتراک‌گذاری رکورد</h2>
+    <p class="share-subtitle">عکس رکوردت رو بساز و با دوستات به اشتراک بذار!</p>
+
+    <div class="share-preview" id="sharePreview">
+      <div class="share-preview-title">🎮 Armond Mosavian Clicker</div>
+      <div class="share-preview-stats">
+        <div class="share-stat">
+          <span class="share-stat-label">🪙 سکه‌های فعلی</span>
+          <span class="share-stat-value" id="shareCoins">0</span>
+        </div>
+        <div class="share-stat">
+          <span class="share-stat-label" id="shareLevelLabel">🪵 لول</span>
+          <span class="share-stat-value" id="shareLevel">چوب (سطح 1)</span>
+        </div>
+        <div class="share-stat">
+          <span class="share-stat-label">👆 کل کلیک‌ها</span>
+          <span class="share-stat-value" id="shareClicks">0</span>
+        </div>
+        <div class="share-stat">
+          <span class="share-stat-label">🏆 بالاترین سطح</span>
+          <span class="share-stat-value" id="shareBestLevel">1</span>
+        </div>
+        <div class="share-stat">
+          <span class="share-stat-label">🏅 دستاوردها</span>
+          <span class="share-stat-value" id="shareAchievements">0</span>
+        </div>
+      </div>
+      <div class="share-preview-footer">🚀 @Armondadmin_youtobe_aparat</div>
+    </div>
+
+    <div class="share-actions">
+      <button class="share-btn download" id="shareDownloadBtn">📥 دانلود عکس</button>
+      <button class="share-btn copy" id="shareCopyBtn">📋 کپی متن</button>
+      <button class="share-btn rubika" id="shareRubikaBtn">💬 ارسال به روبیکا</button>
+    </div>
+  </div>
+</div>
+
 <!-- کد سکه -->
 <div class="shop-overlay" id="codeOverlay">
   <div class="code-modal">
@@ -1881,49 +2046,34 @@
 
 <script>
   const VALID_CODES = {
-    // 🥉 بسته ۱۰۰ میلیون سکه (۱۰ کد)
     'ARM-100M-001': 100000000, 'ARM-100M-002': 100000000, 'ARM-100M-003': 100000000,
     'ARM-100M-004': 100000000, 'ARM-100M-005': 100000000, 'ARM-100M-006': 100000000,
     'ARM-100M-007': 100000000, 'ARM-100M-008': 100000000, 'ARM-100M-009': 100000000,
     'ARM-100M-010': 100000000,
-
-    // 🥈 بسته ۵۰۰ میلیون سکه (۱۰ کد)
     'ARM-500M-001': 500000000, 'ARM-500M-002': 500000000, 'ARM-500M-003': 500000000,
     'ARM-500M-004': 500000000, 'ARM-500M-005': 500000000, 'ARM-500M-006': 500000000,
     'ARM-500M-007': 500000000, 'ARM-500M-008': 500000000, 'ARM-500M-009': 500000000,
     'ARM-500M-010': 500000000,
-
-    // 🥇 بسته ۱ میلیارد سکه (۱۰ کد)
     'ARM-1B-001': 1000000000, 'ARM-1B-002': 1000000000, 'ARM-1B-003': 1000000000,
     'ARM-1B-004': 1000000000, 'ARM-1B-005': 1000000000, 'ARM-1B-006': 1000000000,
     'ARM-1B-007': 1000000000, 'ARM-1B-008': 1000000000, 'ARM-1B-009': 1000000000,
     'ARM-1B-010': 1000000000,
-
-    // 💎 بسته ۵ میلیارد سکه (۱۰ کد)
     'ARM-5B-001': 5000000000, 'ARM-5B-002': 5000000000, 'ARM-5B-003': 5000000000,
     'ARM-5B-004': 5000000000, 'ARM-5B-005': 5000000000, 'ARM-5B-006': 5000000000,
     'ARM-5B-007': 5000000000, 'ARM-5B-008': 5000000000, 'ARM-5B-009': 5000000000,
     'ARM-5B-010': 5000000000,
-
-    // 🏆 بسته ۱۰ میلیارد سکه (۱۰ کد)
     'ARM-10B-001': 10000000000, 'ARM-10B-002': 10000000000, 'ARM-10B-003': 10000000000,
     'ARM-10B-004': 10000000000, 'ARM-10B-005': 10000000000, 'ARM-10B-006': 10000000000,
     'ARM-10B-007': 10000000000, 'ARM-10B-008': 10000000000, 'ARM-10B-009': 10000000000,
     'ARM-10B-010': 10000000000,
-
-    // 👑 بسته ۵۰ میلیارد سکه (۱۰ کد)
     'ARM-50B-001': 50000000000, 'ARM-50B-002': 50000000000, 'ARM-50B-003': 50000000000,
     'ARM-50B-004': 50000000000, 'ARM-50B-005': 50000000000, 'ARM-50B-006': 50000000000,
     'ARM-50B-007': 50000000000, 'ARM-50B-008': 50000000000, 'ARM-50B-009': 50000000000,
     'ARM-50B-010': 50000000000,
-
-    // 🌟 بسته ۱۰۰ میلیارد سکه (۱۰ کد)
     'ARM-100B-001': 100000000000, 'ARM-100B-002': 100000000000, 'ARM-100B-003': 100000000000,
     'ARM-100B-004': 100000000000, 'ARM-100B-005': 100000000000, 'ARM-100B-006': 100000000000,
     'ARM-100B-007': 100000000000, 'ARM-100B-008': 100000000000, 'ARM-100B-009': 100000000000,
     'ARM-100B-010': 100000000000,
-
-    // 🎁 کدهای تست (فقط برای خودت)
     'TEST-100': 100,
     'TEST-1000': 1000,
   };
@@ -2322,6 +2472,7 @@
     { id: 'code_first', icon: '🎁', title: 'کدباز', desc: 'اولین کد سکه رو استفاده کن', reward: 300, check: () => usedCodes.length >= 1 },
     { id: 'chest_first', icon: '📦', title: 'گنج‌یاب', desc: 'اولین صندوقچه رو باز کن', reward: 500, check: () => getLastChest() > 0 },
     { id: 'sell_first', icon: '💸', title: 'فروشنده', desc: 'اولین بار سکه بفروش', reward: 500, check: () => localStorage.getItem('armondFirstSell') === 'true' },
+    { id: 'share_first', icon: '📤', title: 'سهیم‌کننده', desc: 'اولین بار رکوردت رو به اشتراک بذار', reward: 1000, check: () => localStorage.getItem('armondFirstShare') === 'true' },
     { id: 'challenge_first', icon: '📅', title: 'چالشگر', desc: 'اولین چالش روزانه رو کامل کن', reward: 1000, check: () => {
       const d = JSON.parse(localStorage.getItem('armondDailyChallenge') || 'null');
       return d && d.completed && d.rewardClaimed;
@@ -2978,6 +3129,202 @@
         window.open('https://rubika.ir/Armondadmin_youtobe_aparat', '_blank');
       }
     }, 1500);
+  });
+
+  /* ===== اشتراک‌گذاری رکورد ===== */
+  const shareOpenBtn = document.getElementById('shareOpenBtn');
+  const shareOverlay = document.getElementById('shareOverlay');
+  const shareCloseBtn = document.getElementById('shareCloseBtn');
+  const shareCoins = document.getElementById('shareCoins');
+  const shareLevel = document.getElementById('shareLevel');
+  const shareLevelLabel = document.getElementById('shareLevelLabel');
+  const shareClicks = document.getElementById('shareClicks');
+  const shareBestLevel = document.getElementById('shareBestLevel');
+  const shareAchievements = document.getElementById('shareAchievements');
+  const shareDownloadBtn = document.getElementById('shareDownloadBtn');
+  const shareCopyBtn = document.getElementById('shareCopyBtn');
+  const shareRubikaBtn = document.getElementById('shareRubikaBtn');
+  const sharePreview = document.getElementById('sharePreview');
+
+  shareOpenBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); initAudio(); playShopSound();
+    updateSharePreview();
+    shareOverlay.classList.add('show');
+  });
+
+  shareCloseBtn.addEventListener('click', () => {
+    playCancelSound();
+    shareOverlay.classList.remove('show');
+  });
+
+  shareOverlay.addEventListener('click', (e) => {
+    if (e.target === shareOverlay) {
+      playCancelSound();
+      shareOverlay.classList.remove('show');
+    }
+  });
+
+  function updateSharePreview() {
+    const level = getLevel(coins);
+    const lvl = getLevelName(level);
+    shareCoins.textContent = coins.toLocaleString('en-US') + ' سکه';
+    shareLevelLabel.textContent = lvl.emoji + ' لول';
+    shareLevel.textContent = lvl.name + ' (سطح ' + level + ')';
+    shareClicks.textContent = totalClicks.toLocaleString('en-US') + ' بار';
+    shareBestLevel.textContent = 'سطح ' + bestLevel;
+    shareAchievements.textContent = unlockedAchievements.length + ' از ' + ACHIEVEMENTS.length;
+  }
+
+  function getShareText() {
+    const level = getLevel(coins);
+    const lvl = getLevelName(level);
+    return '🎮 Armond Mosavian Clicker\n\n' +
+      '🪙 سکه‌هام: ' + coins.toLocaleString('en-US') + '\n' +
+      lvl.emoji + ' لول: ' + lvl.name + ' (سطح ' + level + ')\n' +
+      '👆 کل کلیک‌ها: ' + totalClicks.toLocaleString('en-US') + '\n' +
+      '🏆 بالاترین سطح: ' + bestLevel + '\n' +
+      '🏅 دستاوردها: ' + unlockedAchievements.length + ' از ' + ACHIEVEMENTS.length + '\n\n' +
+      '🚀 تو هم بازی کن:\n' +
+      'https://bossraesbehyad8686-dot.github.io/Game/\n\n' +
+      '📱 آیدی ادمین: @Armondadmin_youtobe_aparat';
+  }
+
+  shareCopyBtn.addEventListener('click', () => {
+    const text = getShareText();
+    navigator.clipboard.writeText(text).then(() => {
+      playSuccessSound();
+      localStorage.setItem('armondFirstShare', 'true');
+      checkAchievements();
+      const original = shareCopyBtn.innerHTML;
+      shareCopyBtn.innerHTML = '✅ کپی شد!';
+      shareCopyBtn.style.background = 'linear-gradient(135deg, #00c853, #009624)';
+      setTimeout(() => {
+        shareCopyBtn.innerHTML = original;
+        shareCopyBtn.style.background = '';
+      }, 1500);
+    });
+  });
+
+  shareRubikaBtn.addEventListener('click', () => {
+    const text = encodeURIComponent(getShareText());
+    playSuccessSound();
+    localStorage.setItem('armondFirstShare', 'true');
+    checkAchievements();
+    // تلاش برای باز کردن روبیکا
+    window.open('https://rubika.ir/share?text=' + text, '_blank');
+  });
+
+  shareDownloadBtn.addEventListener('click', () => {
+    playSuccessSound();
+    localStorage.setItem('armondFirstShare', 'true');
+    checkAchievements();
+
+    // ساخت تصویر با Canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 900;
+    const ctx = canvas.getContext('2d');
+
+    // پس‌زمینه گرادیانت
+    const grad = ctx.createLinearGradient(0, 0, 800, 900);
+    grad.addColorStop(0, '#1a0f05');
+    grad.addColorStop(1, '#0a0a0a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 800, 900);
+
+    // حاشیه
+    ctx.strokeStyle = '#ffd700';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(20, 20, 760, 860);
+
+    // عنوان
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 38px Tahoma, Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('🎮 Armond Mosavian Clicker', 400, 100);
+
+    // خط جداکننده
+    ctx.strokeStyle = '#ff8c00';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(80, 130);
+    ctx.lineTo(720, 130);
+    ctx.stroke();
+
+    // آمار
+    const level = getLevel(coins);
+    const lvl = getLevelName(level);
+    ctx.fillStyle = '#ffb300';
+    ctx.font = 'bold 28px Tahoma, Arial';
+    ctx.textAlign = 'right';
+
+    const stats = [
+      { label: '🪙 سکه‌های فعلی:', value: coins.toLocaleString('en-US') },
+      { label: lvl.emoji + ' لول فعلی:', value: lvl.name + ' (سطح ' + level + ')' },
+      { label: '👆 کل کلیک‌ها:', value: totalClicks.toLocaleString('en-US') },
+      { label: '🏆 بالاترین سطح:', value: 'سطح ' + bestLevel },
+      { label: '🏅 دستاوردها:', value: unlockedAchievements.length + ' از ' + ACHIEVEMENTS.length }
+    ];
+
+    stats.forEach((stat, i) => {
+      const y = 200 + i * 70;
+      ctx.fillStyle = '#bba080';
+      ctx.font = 'bold 24px Tahoma, Arial';
+      ctx.textAlign = 'right';
+      ctx.fillText(stat.label, 350, y);
+
+      ctx.fillStyle = '#ffd700';
+      ctx.font = 'bold 28px Tahoma, Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText(stat.value, 380, y);
+    });
+
+    // خط جداکننده پایین
+    ctx.strokeStyle = '#ff8c00';
+    ctx.beginPath();
+    ctx.moveTo(80, 620);
+    ctx.lineTo(720, 620);
+    ctx.stroke();
+
+    // لینک بازی
+    ctx.fillStyle = '#64b5f6';
+    ctx.font = 'bold 22px Tahoma, Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('🚀 تو هم بازی کن:', 400, 670);
+    ctx.fillStyle = '#00e676';
+    ctx.font = 'bold 20px Tahoma, Arial';
+    ctx.fillText('bossraesbehyad8686-dot.github.io/Game', 400, 710);
+
+    // آیدی
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 20px Tahoma, Arial';
+    ctx.fillText('📱 @Armondadmin_youtobe_aparat', 400, 770);
+
+    // متن پایین
+    ctx.fillStyle = '#bba080';
+    ctx.font = '18px Tahoma, Arial';
+    ctx.fillText('🐹 Armond Mosavian Clicker — بازی کلیکری', 400, 830);
+
+    // دانلود
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'armond-record-' + Date.now() + '.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      levelToast.innerHTML = '✅ عکس رکوردت ذخیره شد!<br><span style="font-size:14px;">حالا می‌تونی توی روبیکا یا آپارات بذاری</span>';
+      levelToast.style.background = 'linear-gradient(135deg, #2196f3, #0d47a1)';
+      levelToast.classList.remove('show');
+      void levelToast.offsetWidth;
+      levelToast.classList.add('show');
+      setTimeout(() => {
+        levelToast.style.background = 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))';
+      }, 2500);
+    }, 'image/png');
   });
 </script>
 
