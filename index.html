@@ -517,7 +517,6 @@
     font-size: 12px; text-align: center; line-height: 1.8;
   }
 
-  /* مودال فروش سکه */
   .sell-modal {
     background: linear-gradient(160deg, #0a2a1a 0%, #051a0a 100%);
     border: 3px solid #00c853;
@@ -1770,7 +1769,7 @@
     <button class="shop-modal-close" id="codeCloseBtn">✕</button>
     <h2>🎁 وارد کردن کد سکه</h2>
     <p class="code-subtitle">کدی که از ادمین گرفتی رو وارد کن و سکه‌هات رو بگیر!</p>
-    <input type="text" class="code-input" id="codeInput" placeholder="مثلاً: ARMOND-XXXX-XXXX" maxlength="30" autocomplete="off">
+    <input type="text" class="code-input" id="codeInput" placeholder="مثلاً: ARM-1B-001" maxlength="30" autocomplete="off">
     <button class="code-submit" id="codeSubmitBtn">✅ تایید و دریافت سکه</button>
     <div class="code-message" id="codeMessage"></div>
     <div class="code-instructions">
@@ -1882,11 +1881,51 @@
 
 <script>
   const VALID_CODES = {
-    'ARMOND-1000-A1B2': 1000, 'ARMOND-1000-C3D4': 1000, 'ARMOND-1000-E5F6': 1000,
-    'ARMOND-5000-G7H8': 5000, 'ARMOND-5000-I9J0': 5000, 'ARMOND-5000-K1L2': 5000,
-    'ARMOND-10000-M3N4': 10000, 'ARMOND-10000-O5P6': 10000, 'ARMOND-10000-Q7R8': 10000,
-    'ARMOND-50000-S9T0': 50000, 'ARMOND-50000-U1V2': 50000, 'ARMOND-50000-W3X4': 50000,
-    'TEST-100': 100, 'TEST-1000': 1000,
+    // 🥉 بسته ۱۰۰ میلیون سکه (۱۰ کد)
+    'ARM-100M-001': 100000000, 'ARM-100M-002': 100000000, 'ARM-100M-003': 100000000,
+    'ARM-100M-004': 100000000, 'ARM-100M-005': 100000000, 'ARM-100M-006': 100000000,
+    'ARM-100M-007': 100000000, 'ARM-100M-008': 100000000, 'ARM-100M-009': 100000000,
+    'ARM-100M-010': 100000000,
+
+    // 🥈 بسته ۵۰۰ میلیون سکه (۱۰ کد)
+    'ARM-500M-001': 500000000, 'ARM-500M-002': 500000000, 'ARM-500M-003': 500000000,
+    'ARM-500M-004': 500000000, 'ARM-500M-005': 500000000, 'ARM-500M-006': 500000000,
+    'ARM-500M-007': 500000000, 'ARM-500M-008': 500000000, 'ARM-500M-009': 500000000,
+    'ARM-500M-010': 500000000,
+
+    // 🥇 بسته ۱ میلیارد سکه (۱۰ کد)
+    'ARM-1B-001': 1000000000, 'ARM-1B-002': 1000000000, 'ARM-1B-003': 1000000000,
+    'ARM-1B-004': 1000000000, 'ARM-1B-005': 1000000000, 'ARM-1B-006': 1000000000,
+    'ARM-1B-007': 1000000000, 'ARM-1B-008': 1000000000, 'ARM-1B-009': 1000000000,
+    'ARM-1B-010': 1000000000,
+
+    // 💎 بسته ۵ میلیارد سکه (۱۰ کد)
+    'ARM-5B-001': 5000000000, 'ARM-5B-002': 5000000000, 'ARM-5B-003': 5000000000,
+    'ARM-5B-004': 5000000000, 'ARM-5B-005': 5000000000, 'ARM-5B-006': 5000000000,
+    'ARM-5B-007': 5000000000, 'ARM-5B-008': 5000000000, 'ARM-5B-009': 5000000000,
+    'ARM-5B-010': 5000000000,
+
+    // 🏆 بسته ۱۰ میلیارد سکه (۱۰ کد)
+    'ARM-10B-001': 10000000000, 'ARM-10B-002': 10000000000, 'ARM-10B-003': 10000000000,
+    'ARM-10B-004': 10000000000, 'ARM-10B-005': 10000000000, 'ARM-10B-006': 10000000000,
+    'ARM-10B-007': 10000000000, 'ARM-10B-008': 10000000000, 'ARM-10B-009': 10000000000,
+    'ARM-10B-010': 10000000000,
+
+    // 👑 بسته ۵۰ میلیارد سکه (۱۰ کد)
+    'ARM-50B-001': 50000000000, 'ARM-50B-002': 50000000000, 'ARM-50B-003': 50000000000,
+    'ARM-50B-004': 50000000000, 'ARM-50B-005': 50000000000, 'ARM-50B-006': 50000000000,
+    'ARM-50B-007': 50000000000, 'ARM-50B-008': 50000000000, 'ARM-50B-009': 50000000000,
+    'ARM-50B-010': 50000000000,
+
+    // 🌟 بسته ۱۰۰ میلیارد سکه (۱۰ کد)
+    'ARM-100B-001': 100000000000, 'ARM-100B-002': 100000000000, 'ARM-100B-003': 100000000000,
+    'ARM-100B-004': 100000000000, 'ARM-100B-005': 100000000000, 'ARM-100B-006': 100000000000,
+    'ARM-100B-007': 100000000000, 'ARM-100B-008': 100000000000, 'ARM-100B-009': 100000000000,
+    'ARM-100B-010': 100000000000,
+
+    // 🎁 کدهای تست (فقط برای خودت)
+    'TEST-100': 100,
+    'TEST-1000': 1000,
   };
 
   const COINS_PER_LEVEL = 10000;
@@ -2822,8 +2861,8 @@
   updateChallengeProgress();
 
   /* ===== فروش سکه ===== */
-  const SELL_RATE = 100000000; // 100 میلیون سکه
-  const SELL_PRICE = 1000; // 1000 تومان
+  const SELL_RATE = 100000000;
+  const SELL_PRICE = 1000;
 
   const sellOpenBtn = document.getElementById('sellOpenBtn');
   const sellOverlay = document.getElementById('sellOverlay');
@@ -2912,7 +2951,6 @@
 
     const money = Math.floor(amount / SELL_RATE) * SELL_PRICE;
 
-    // کم کردن سکه‌ها
     coins -= amount;
     localStorage.setItem('armondCoins', coins);
     updateUI();
@@ -2921,7 +2959,6 @@
     sellAmountInput.value = '';
     updateSellCalc();
 
-    // ذخیره اولین فروش
     localStorage.setItem('armondFirstSell', 'true');
 
     playSuccessSound();
