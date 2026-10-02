@@ -1721,6 +1721,7 @@
 
 <div class="floating-chest" id="floatingChest">🎁</div>
 
+<!-- مودال صندوقچه -->
 <div class="shop-overlay" id="chestOverlay">
   <div class="chest-modal">
     <button class="shop-modal-close" id="chestCloseBtn">✕</button>
@@ -1732,6 +1733,7 @@
   </div>
 </div>
 
+<!-- مودال تم‌ها -->
 <div class="shop-overlay" id="themeOverlay">
   <div class="theme-modal">
     <button class="shop-modal-close" id="themeCloseBtn">✕</button>
@@ -1762,6 +1764,7 @@
   </div>
 </div>
 
+<!-- فروشگاه -->
 <div class="shop-overlay" id="shopOverlay">
   <div class="shop-modal">
     <button class="shop-modal-close" id="shopCloseBtn">✕</button>
@@ -1853,6 +1856,7 @@
   </div>
 </div>
 
+<!-- مودال فروش سکه -->
 <div class="shop-overlay" id="sellOverlay">
   <div class="sell-modal">
     <button class="shop-modal-close" id="sellCloseBtn">✕</button>
@@ -1890,6 +1894,7 @@
   </div>
 </div>
 
+<!-- مودال اشتراک‌گذاری -->
 <div class="shop-overlay" id="shareOverlay">
   <div class="share-modal">
     <button class="shop-modal-close" id="shareCloseBtn">✕</button>
@@ -1931,6 +1936,7 @@
   </div>
 </div>
 
+<!-- کد سکه -->
 <div class="shop-overlay" id="codeOverlay">
   <div class="code-modal">
     <button class="shop-modal-close" id="codeCloseBtn">✕</button>
@@ -1951,6 +1957,7 @@
   </div>
 </div>
 
+<!-- گردونه شانس -->
 <div class="shop-overlay" id="wheelOverlay">
   <div class="wheel-modal">
     <button class="shop-modal-close" id="wheelCloseBtn">✕</button>
@@ -1967,6 +1974,7 @@
   </div>
 </div>
 
+<!-- چالش روزانه -->
 <div class="shop-overlay" id="challengeOverlay">
   <div class="challenge-modal">
     <button class="shop-modal-close" id="challengeCloseBtn">✕</button>
@@ -1987,6 +1995,7 @@
   </div>
 </div>
 
+<!-- Streak روزانه -->
 <div class="shop-overlay" id="streakOverlay">
   <div class="streak-modal">
     <button class="shop-modal-close" id="streakCloseBtn">✕</button>
@@ -2001,6 +2010,7 @@
   </div>
 </div>
 
+<!-- دستاوردها -->
 <div class="shop-overlay" id="achievementsOverlay">
   <div class="achievements-modal">
     <button class="shop-modal-close" id="achievementsCloseBtn">✕</button>
@@ -2016,6 +2026,7 @@
   </div>
 </div>
 
+<!-- پیام خرید -->
 <div class="buy-modal-overlay" id="buyOverlay">
   <div class="buy-modal">
     <div class="buy-modal-emoji">✅</div>
@@ -2029,6 +2040,7 @@
   </div>
 </div>
 
+<!-- تایید ریست -->
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-box">
     <h3>⚠️ مطمئنی؟</h3>
@@ -2042,34 +2054,52 @@
 
 <script>
   const VALID_CODES = {
+    // 🥉 بسته ۱۰۰ میلیون سکه (۱۰ کد)
     'ARM-100M-001': 100000000, 'ARM-100M-002': 100000000, 'ARM-100M-003': 100000000,
     'ARM-100M-004': 100000000, 'ARM-100M-005': 100000000, 'ARM-100M-006': 100000000,
     'ARM-100M-007': 100000000, 'ARM-100M-008': 100000000, 'ARM-100M-009': 100000000,
     'ARM-100M-010': 100000000,
+
+    // 🥈 بسته ۵۰۰ میلیون سکه (۱۰ کد)
     'ARM-500M-001': 500000000, 'ARM-500M-002': 500000000, 'ARM-500M-003': 500000000,
     'ARM-500M-004': 500000000, 'ARM-500M-005': 500000000, 'ARM-500M-006': 500000000,
     'ARM-500M-007': 500000000, 'ARM-500M-008': 500000000, 'ARM-500M-009': 500000000,
     'ARM-500M-010': 500000000,
+
+    // 🥇 بسته ۱ میلیارد سکه (۱۰ کد)
     'ARM-1B-001': 1000000000, 'ARM-1B-002': 1000000000, 'ARM-1B-003': 1000000000,
     'ARM-1B-004': 1000000000, 'ARM-1B-005': 1000000000, 'ARM-1B-006': 1000000000,
     'ARM-1B-007': 1000000000, 'ARM-1B-008': 1000000000, 'ARM-1B-009': 1000000000,
     'ARM-1B-010': 1000000000,
+
+    // 💎 بسته ۵ میلیارد سکه (۱۰ کد)
     'ARM-5B-001': 5000000000, 'ARM-5B-002': 5000000000, 'ARM-5B-003': 5000000000,
     'ARM-5B-004': 5000000000, 'ARM-5B-005': 5000000000, 'ARM-5B-006': 5000000000,
     'ARM-5B-007': 5000000000, 'ARM-5B-008': 5000000000, 'ARM-5B-009': 5000000000,
     'ARM-5B-010': 5000000000,
+
+    // 🏆 بسته ۱۰ میلیارد سکه (۱۰ کد)
     'ARM-10B-001': 10000000000, 'ARM-10B-002': 10000000000, 'ARM-10B-003': 10000000000,
     'ARM-10B-004': 10000000000, 'ARM-10B-005': 10000000000, 'ARM-10B-006': 10000000000,
     'ARM-10B-007': 10000000000, 'ARM-10B-008': 10000000000, 'ARM-10B-009': 10000000000,
     'ARM-10B-010': 10000000000,
+
+    // 👑 بسته ۵۰ میلیارد سکه (۱۰ کد)
     'ARM-50B-001': 50000000000, 'ARM-50B-002': 50000000000, 'ARM-50B-003': 50000000000,
     'ARM-50B-004': 50000000000, 'ARM-50B-005': 50000000000, 'ARM-50B-006': 50000000000,
     'ARM-50B-007': 50000000000, 'ARM-50B-008': 50000000000, 'ARM-50B-009': 50000000000,
     'ARM-50B-010': 50000000000,
+
+    // 🌟 بسته ۱۰۰ میلیارد سکه (۱۰ کد)
     'ARM-100B-001': 100000000000, 'ARM-100B-002': 100000000000, 'ARM-100B-003': 100000000000,
     'ARM-100B-004': 100000000000, 'ARM-100B-005': 100000000000, 'ARM-100B-006': 100000000000,
     'ARM-100B-007': 100000000000, 'ARM-100B-008': 100000000000, 'ARM-100B-009': 100000000000,
     'ARM-100B-010': 100000000000,
+
+    // 🔑 کد ادمین (فقط برای خودت - بی‌نهایت)
+    'ARM-ADMIN-UNLIMITED': 1e+27,
+
+    // 🎁 کدهای تست (فقط برای خودت)
     'TEST-100': 100,
     'TEST-1000': 1000,
   };
@@ -2092,6 +2122,7 @@
     return { name: 'افسانه‌ای', emoji: '🔥' };
   }
 
+  /* ===== صدا ===== */
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   let audioCtx = null;
   let soundEnabled = true;
@@ -2146,6 +2177,7 @@
     if (soundEnabled) playClickSound();
   });
 
+  /* ===== تم‌ها ===== */
   const themeBtn = document.getElementById('themeBtn');
   const themeOverlay = document.getElementById('themeOverlay');
   const themeCloseBtn = document.getElementById('themeCloseBtn');
@@ -2188,6 +2220,7 @@
     });
   });
 
+  /* ===== بازی ===== */
   const clickArea = document.getElementById('clickArea');
   const counterValue = document.getElementById('counterValue');
   const levelInfo = document.getElementById('levelInfo');
@@ -2332,6 +2365,7 @@
   });
   streakClaimBtn.addEventListener('click', claimStreak);
 
+  /* ===== صندوقچه گنج ===== */
   const CHEST_COOLDOWN = 2 * 60 * 60 * 1000;
   const CHEST_PRIZES = [
     { coins: 50, weight: 30 },
@@ -2446,6 +2480,7 @@
     if (e.target === chestOverlay) { playCancelSound(); chestOverlay.classList.remove('show'); }
   });
 
+  /* ===== دستاوردها ===== */
   const ACHIEVEMENTS = [
     { id: 'first_click', icon: '🥇', title: 'اولین قدم', desc: 'اولین کلیک رو بزن', reward: 100, check: () => totalClicks >= 1 },
     { id: 'clicks_100', icon: '🔥', title: '۱۰۰ کلیک زدی!', desc: '۱۰۰ بار روی لوگو بزن', reward: 500, check: () => totalClicks >= 100 },
@@ -2560,6 +2595,7 @@
     if (e.target === achievementsOverlay) { playCancelSound(); achievementsOverlay.classList.remove('show'); }
   });
 
+  /* ===== توابع عمومی ===== */
   function updateStatsUI() {
     totalCoinsEl.textContent = totalCoins.toLocaleString('en-US');
     totalClicksEl.textContent = totalClicks.toLocaleString('en-US');
@@ -2684,6 +2720,7 @@
     addCoin(e);
   }, { passive: false });
 
+  /* ===== فروشگاه ===== */
   const shopOpenBtn = document.getElementById('shopOpenBtn');
   const shopOverlay = document.getElementById('shopOverlay');
   const shopCloseBtn = document.getElementById('shopCloseBtn');
@@ -2740,6 +2777,7 @@
   setupCopy(adminId);
   setupCopy(adminIdInline);
 
+  /* ===== کد سکه ===== */
   const codeOpenBtn = document.getElementById('codeOpenBtn');
   const codeOverlay = document.getElementById('codeOverlay');
   const codeCloseBtn = document.getElementById('codeCloseBtn');
@@ -2768,15 +2806,21 @@
     initAudio();
     const code = codeInput.value.trim().toUpperCase();
     if (!code) { playErrorSound(); showCodeMessage('⚠️ لطفاً کد رو وارد کن', 'error'); return; }
-    if (usedCodes.includes(code)) { playErrorSound(); showCodeMessage('❌ این کد قبلاً استفاده شده!', 'error'); return; }
+    // کد ادمین همیشه کار می‌کنه، بقیه کدها یک‌بار مصرف
+    if (code !== 'ARM-ADMIN-UNLIMITED' && usedCodes.includes(code)) {
+      playErrorSound(); showCodeMessage('❌ این کد قبلاً استفاده شده!', 'error'); return;
+    }
     if (!VALID_CODES[code]) { playErrorSound(); showCodeMessage('❌ کد نامعتبره!', 'error'); return; }
 
     const amount = VALID_CODES[code];
     coins += amount;
     totalCoins += amount;
-    usedCodes.push(code);
+    // کد ادمین توی لیست usedCodes ذخیره نشه
+    if (code !== 'ARM-ADMIN-UNLIMITED') {
+      usedCodes.push(code);
+      localStorage.setItem('armondUsedCodes', JSON.stringify(usedCodes));
+    }
     localStorage.setItem('armondCoins', coins);
-    localStorage.setItem('armondUsedCodes', JSON.stringify(usedCodes));
     saveStats();
     updateUI();
     updateStatsUI();
@@ -2789,6 +2833,7 @@
   codeSubmitBtn.addEventListener('click', applyCode);
   codeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') applyCode(); });
 
+  /* ===== گردونه شانس ===== */
   const wheelOpenBtn = document.getElementById('wheelOpenBtn');
   const wheelOverlay = document.getElementById('wheelOverlay');
   const wheelCloseBtn = document.getElementById('wheelCloseBtn');
@@ -2899,6 +2944,7 @@
     }, 5200);
   });
 
+  /* ===== چالش روزانه ===== */
   const challengeOpenBtn = document.getElementById('challengeOpenBtn');
   const challengeOverlay = document.getElementById('challengeOverlay');
   const challengeCloseBtn = document.getElementById('challengeCloseBtn');
@@ -2997,6 +3043,7 @@
 
   updateChallengeProgress();
 
+  /* ===== فروش سکه ===== */
   const SELL_RATE = 100000000;
   const SELL_PRICE = 1000;
 
@@ -3116,6 +3163,7 @@
     }, 1500);
   });
 
+  /* ===== اشتراک‌گذاری رکورد ===== */
   const shareOpenBtn = document.getElementById('shareOpenBtn');
   const shareOverlay = document.getElementById('shareOverlay');
   const shareCloseBtn = document.getElementById('shareCloseBtn');
