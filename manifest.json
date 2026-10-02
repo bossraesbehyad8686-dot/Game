@@ -1,0 +1,28 @@
+{
+  "name": "Armond Mosavian Clicker",
+  "short_name": "Armond",
+  "description": "بازی کلیکری Armond Mosavian - سکه جمع کن، لول‌آپ شو، جایزه بگیر!",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff8c00",
+  "lang": "fa",
+  "dir": "rtl",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
