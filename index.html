@@ -311,7 +311,7 @@
     margin: 40px auto 20px;
     position: relative;
     z-index: 2;
-    max-width: 700px;
+    max-width: 800px;
     padding: 0 20px;
   }
   .main-btn {
@@ -339,6 +339,18 @@
   @keyframes shopPulse {
     0%, 100% { box-shadow: 0 0 35px var(--theme-glow), 0 8px 20px rgba(0,0,0,0.5); }
     50% { box-shadow: 0 0 55px var(--theme-glow), 0 8px 20px rgba(0,0,0,0.5); }
+  }
+  .sell-open-btn {
+    background: linear-gradient(135deg, #00c853, #009624, #00695c);
+    color: #fff;
+    border-color: #69f0ae;
+    box-shadow: 0 0 25px rgba(0, 200, 80, 0.7), 0 8px 20px rgba(0,0,0,0.5);
+    animation: sellPulse 2s infinite;
+  }
+  .sell-open-btn:hover { transform: translateY(-3px) scale(1.05); }
+  @keyframes sellPulse {
+    0%, 100% { box-shadow: 0 0 25px rgba(0, 200, 80, 0.7), 0 8px 20px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 0 45px rgba(0, 230, 118, 1), 0 8px 20px rgba(0,0,0,0.5); }
   }
   .code-open-btn {
     background: linear-gradient(135deg, #00c853, #009624);
@@ -503,6 +515,144 @@
     border: 1px solid rgba(0, 150, 255, 0.4);
     border-radius: 12px; color: #88cfff;
     font-size: 12px; text-align: center; line-height: 1.8;
+  }
+
+  /* مودال فروش سکه */
+  .sell-modal {
+    background: linear-gradient(160deg, #0a2a1a 0%, #051a0a 100%);
+    border: 3px solid #00c853;
+    border-radius: 25px;
+    padding: 30px 25px;
+    max-width: 480px; width: 100%;
+    box-shadow: 0 0 60px rgba(0, 200, 80, 0.6);
+    font-family: Tahoma, sans-serif;
+    animation: popIn 0.35s ease;
+    position: relative;
+  }
+  .sell-modal h2 {
+    color: #00e676; font-size: 24px; text-align: center;
+    margin-bottom: 8px; text-shadow: 0 0 15px rgba(0, 200, 80, 0.8);
+  }
+  .sell-subtitle {
+    color: #88ffb8; font-size: 13px; text-align: center;
+    margin-bottom: 20px; line-height: 1.8;
+  }
+  .sell-balance {
+    background: rgba(0, 200, 80, 0.1);
+    border: 1px solid rgba(0, 200, 80, 0.4);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .sell-balance-label {
+    color: #88ffb8;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .sell-balance-value {
+    color: #00e676;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 200, 80, 0.8);
+    direction: ltr;
+  }
+  .sell-rate {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px dashed #ffd700;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 18px;
+    text-align: center;
+    color: #ffd700;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .sell-input-group {
+    margin-bottom: 15px;
+  }
+  .sell-input-label {
+    color: #88ffb8;
+    font-size: 13px;
+    margin-bottom: 8px;
+    display: block;
+    text-align: right;
+  }
+  .sell-input {
+    width: 100%;
+    padding: 16px 18px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 200, 80, 0.5);
+    border-radius: 14px;
+    color: #00e676;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    direction: ltr;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+  .sell-input:focus {
+    border-color: #00e676;
+    box-shadow: 0 0 20px rgba(0, 230, 120, 0.5);
+    background: rgba(0, 30, 10, 0.7);
+  }
+  .sell-quick-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+  .sell-quick-btn {
+    background: rgba(0, 200, 80, 0.15);
+    border: 1px solid rgba(0, 200, 80, 0.5);
+    color: #00e676;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .sell-quick-btn:hover {
+    background: rgba(0, 200, 80, 0.3);
+    transform: translateY(-2px);
+  }
+  .sell-calc {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 200, 80, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #88ffb8;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .sell-calc b { color: #00e676; font-size: 16px; }
+  .sell-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #00c853, #009624);
+    color: #fff; border: none;
+    border-radius: 14px;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px; font-weight: bold;
+    cursor: pointer; transition: all 0.2s ease;
+    box-shadow: 0 5px 20px rgba(0, 200, 80, 0.6);
+  }
+  .sell-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 200, 80, 0.9);
+  }
+  .sell-submit:disabled {
+    background: #444;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
   }
 
   .code-modal {
@@ -1278,9 +1428,11 @@
     .about-box { font-size: 13px; padding: 20px 15px; }
     .main-btn { font-size: 12px; padding: 11px 18px; }
     .shop-modal, .code-modal, .wheel-modal, .challenge-modal,
-    .streak-modal, .achievements-modal, .theme-modal, .chest-modal { padding: 25px 15px; }
+    .streak-modal, .achievements-modal, .theme-modal, .chest-modal,
+    .sell-modal { padding: 25px 15px; }
     .shop-modal h2, .code-modal h2, .wheel-modal h2, .challenge-modal h2,
-    .streak-modal h2, .achievements-modal h2, .theme-modal h2, .chest-modal h2 { font-size: 20px; }
+    .streak-modal h2, .achievements-modal h2, .theme-modal h2, .chest-modal h2,
+    .sell-modal h2 { font-size: 20px; }
     .package { padding: 12px; gap: 6px; }
     .pkg-emoji { font-size: 24px; }
     .pkg-coins { font-size: 11px; }
@@ -1357,6 +1509,7 @@
 
 <div class="main-buttons">
   <button class="main-btn shop-open-btn" id="shopOpenBtn">🛒 فروشگاه</button>
+  <button class="main-btn sell-open-btn" id="sellOpenBtn">💸 فروش سکه</button>
   <button class="main-btn code-open-btn" id="codeOpenBtn">🎁 کد سکه</button>
   <button class="main-btn wheel-open-btn" id="wheelOpenBtn">🎰 گردونه شانس</button>
   <button class="main-btn challenge-open-btn" id="challengeOpenBtn">📅 چالش روزانه</button>
@@ -1419,7 +1572,9 @@
   <h3>🎁 صندوقچه گنج</h3>
   <p>هر <span class="highlight">۲ ساعت</span> یه صندوقچه ظاهر می‌شه. بازش کن و بین ۵۰ تا ۲۵,۰۰۰ سکه جایزه بگیر!</p>
   <h3>💰 فروشگاه سکه</h3>
-  <p>نرخ فروش: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
+  <p>نرخ خرید: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
+  <h3>💸 فروش سکه</h3>
+  <p>سکه‌هات رو به ما بفروش! نرخ فروش: <span class="highlight">هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان</span></p>
   <h3>🎨 تم‌ها</h3>
   <p>می‌تونی از دکمه <b>🎨</b> گوشه بالا-راست، تم بازی رو عوض کنی. ۵ تم مختلف داری!</p>
 </div>
@@ -1568,6 +1723,44 @@
       💬 برای خرید، روی بسته مورد نظر بزن و به پیوی روبیکا پیام بده:<br>
       <b style="direction:ltr;display:inline-block;margin-top:6px;">@Armondadmin_youtobe_aparat</b>
     </div>
+  </div>
+</div>
+
+<!-- مودال فروش سکه -->
+<div class="shop-overlay" id="sellOverlay">
+  <div class="sell-modal">
+    <button class="shop-modal-close" id="sellCloseBtn">✕</button>
+    <h2>💸 فروش سکه</h2>
+    <p class="sell-subtitle">سکه‌هات رو به ما بفروش و پول بگیر! 💰</p>
+
+    <div class="sell-balance">
+      <div class="sell-balance-label">💰 موجودی فعلی شما:</div>
+      <div class="sell-balance-value" id="sellBalance">0 سکه</div>
+    </div>
+
+    <div class="sell-rate">
+      💵 نرخ فروش: هر ۱۰۰ میلیون سکه = ۱,۰۰۰ تومان
+    </div>
+
+    <div class="sell-input-group">
+      <label class="sell-input-label">تعداد سکه‌ای که می‌خوای بفروشی:</label>
+      <input type="text" class="sell-input" id="sellAmountInput" placeholder="مثلاً: 100000000" inputmode="numeric" autocomplete="off">
+    </div>
+
+    <div class="sell-quick-btns">
+      <button class="sell-quick-btn" data-amount="100000000">۱۰۰M</button>
+      <button class="sell-quick-btn" data-amount="500000000">۵۰۰M</button>
+      <button class="sell-quick-btn" data-amount="1000000000">۱B</button>
+      <button class="sell-quick-btn" data-amount="5000000000">۵B</button>
+      <button class="sell-quick-btn" data-amount="10000000000">۱۰B</button>
+      <button class="sell-quick-btn" data-amount="max">حداکثر</button>
+    </div>
+
+    <div class="sell-calc" id="sellCalc">
+      💰 مبلغ دریافتی: <b>0 تومان</b>
+    </div>
+
+    <button class="sell-submit" id="sellSubmitBtn" disabled>✅ ثبت درخواست فروش</button>
   </div>
 </div>
 
@@ -2089,6 +2282,7 @@
     { id: 'wheel_first', icon: '🎰', title: 'چرخنده', desc: 'اولین بار گردونه رو بچرخون', reward: 200, check: () => localStorage.getItem('armondLastSpin') !== null },
     { id: 'code_first', icon: '🎁', title: 'کدباز', desc: 'اولین کد سکه رو استفاده کن', reward: 300, check: () => usedCodes.length >= 1 },
     { id: 'chest_first', icon: '📦', title: 'گنج‌یاب', desc: 'اولین صندوقچه رو باز کن', reward: 500, check: () => getLastChest() > 0 },
+    { id: 'sell_first', icon: '💸', title: 'فروشنده', desc: 'اولین بار سکه بفروش', reward: 500, check: () => localStorage.getItem('armondFirstSell') === 'true' },
     { id: 'challenge_first', icon: '📅', title: 'چالشگر', desc: 'اولین چالش روزانه رو کامل کن', reward: 1000, check: () => {
       const d = JSON.parse(localStorage.getItem('armondDailyChallenge') || 'null');
       return d && d.completed && d.rewardClaimed;
@@ -2626,7 +2820,129 @@
   });
 
   updateChallengeProgress();
+
+  /* ===== فروش سکه ===== */
+  const SELL_RATE = 100000000; // 100 میلیون سکه
+  const SELL_PRICE = 1000; // 1000 تومان
+
+  const sellOpenBtn = document.getElementById('sellOpenBtn');
+  const sellOverlay = document.getElementById('sellOverlay');
+  const sellCloseBtn = document.getElementById('sellCloseBtn');
+  const sellBalance = document.getElementById('sellBalance');
+  const sellAmountInput = document.getElementById('sellAmountInput');
+  const sellCalc = document.getElementById('sellCalc');
+  const sellSubmitBtn = document.getElementById('sellSubmitBtn');
+
+  sellOpenBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); initAudio(); playShopSound();
+    sellAmountInput.value = '';
+    updateSellCalc();
+    updateSellBalance();
+    sellOverlay.classList.add('show');
+  });
+
+  sellCloseBtn.addEventListener('click', () => {
+    playCancelSound();
+    sellOverlay.classList.remove('show');
+  });
+
+  sellOverlay.addEventListener('click', (e) => {
+    if (e.target === sellOverlay) {
+      playCancelSound();
+      sellOverlay.classList.remove('show');
+    }
+  });
+
+  function updateSellBalance() {
+    sellBalance.textContent = coins.toLocaleString('en-US') + ' سکه';
+  }
+
+  function updateSellCalc() {
+    const rawValue = sellAmountInput.value.replace(/[^\d]/g, '');
+    const amount = parseInt(rawValue) || 0;
+
+    if (amount <= 0) {
+      sellCalc.innerHTML = '💰 مبلغ دریافتی: <b>0 تومان</b>';
+      sellSubmitBtn.disabled = true;
+      return;
+    }
+
+    if (amount > coins) {
+      sellCalc.innerHTML = '⚠️ سکه کافی نداری!<br>💰 مبلغ دریافتی: <b>0 تومان</b>';
+      sellSubmitBtn.disabled = true;
+      return;
+    }
+
+    if (amount < SELL_RATE) {
+      sellCalc.innerHTML = '⚠️ حداقل مقدار فروش: ۱۰۰ میلیون سکه<br>💰 مبلغ دریافتی: <b>0 تومان</b>';
+      sellSubmitBtn.disabled = true;
+      return;
+    }
+
+    const money = Math.floor(amount / SELL_RATE) * SELL_PRICE;
+    sellCalc.innerHTML = '💰 مبلغ دریافتی: <b>' + money.toLocaleString('en-US') + ' تومان</b>';
+    sellSubmitBtn.disabled = false;
+  }
+
+  sellAmountInput.addEventListener('input', () => {
+    sellAmountInput.value = sellAmountInput.value.replace(/[^\d]/g, '');
+    updateSellCalc();
+  });
+
+  document.querySelectorAll('.sell-quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const amount = btn.dataset.amount;
+      if (amount === 'max') {
+        sellAmountInput.value = coins.toString();
+      } else {
+        sellAmountInput.value = amount;
+      }
+      updateSellCalc();
+    });
+  });
+
+  sellSubmitBtn.addEventListener('click', () => {
+    const rawValue = sellAmountInput.value.replace(/[^\d]/g, '');
+    const amount = parseInt(rawValue) || 0;
+
+    if (amount <= 0 || amount > coins || amount < SELL_RATE) {
+      playErrorSound();
+      return;
+    }
+
+    const money = Math.floor(amount / SELL_RATE) * SELL_PRICE;
+
+    // کم کردن سکه‌ها
+    coins -= amount;
+    localStorage.setItem('armondCoins', coins);
+    updateUI();
+    updateStatsUI();
+    updateSellBalance();
+    sellAmountInput.value = '';
+    updateSellCalc();
+
+    // ذخیره اولین فروش
+    localStorage.setItem('armondFirstSell', 'true');
+
+    playSuccessSound();
+    checkAchievements();
+
+    levelToast.innerHTML = '✅ درخواست فروش ثبت شد!<br><span style="font-size:15px;">' + amount.toLocaleString('en-US') + ' سکه فروختی</span><br><span style="font-size:17px; font-weight: bold;">💰 ' + money.toLocaleString('en-US') + ' تومان</span><br><span style="font-size:12px;">💬 برای دریافت پول به پیوی روبیکا پیام بده</span>';
+    levelToast.style.background = 'linear-gradient(135deg, #00c853, #009624)';
+    levelToast.classList.remove('show');
+    void levelToast.offsetWidth;
+    levelToast.classList.add('show');
+    setTimeout(() => {
+      levelToast.style.background = 'linear-gradient(135deg, var(--theme-primary), var(--theme-secondary))';
+    }, 4000);
+
+    setTimeout(() => {
+      if (confirm('💬 برای دریافت پول، به پیوی روبیکا پیام بده:\n\n@Armondadmin_youtobe_aparat\n\nآیا می‌خوای الان بری؟')) {
+        window.open('https://rubika.ir/Armondadmin_youtobe_aparat', '_blank');
+      }
+    }, 1500);
+  });
 </script>
 
 </body>
-</html>
+ </html>
