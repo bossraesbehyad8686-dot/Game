@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.armond.mosavian.clicker",
-        "sha256_cert_fingerprints": ["17:77:94:5A:32:EE:AE:60:58:D0:6E:C1:89:94:FE:92:DE:EA:93:7D:0A:B3:D9:B9:46:AB:F6:53:D1:29:74:60"]
-      }
-    }]
