@@ -2,7 +2,7 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.armond.mosavian.clicker",
-    "sha256_cert_fingerprints": ["17:77:94:5A:32:EE:AE:60:58:D0:6E:C1:89:94:FE:92:DE:EA:93:7D:0A:B3:D9:B9:46:AB:F6:53:D1:29:74:60"]
+    "package_name": "io.github.bossraesbehyad8686_dot.twa",
+    "sha256_cert_fingerprints": ["02:2A:1E:D9:FE:B0:E6:C9:82:6D:F9:9C:58:35:0B:77:89:AV:1A:D5:1F:14:2F:40:4F:9F:91:D5:8C:02:78:C1"]
   }
 }]
